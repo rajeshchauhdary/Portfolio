@@ -5,7 +5,7 @@ import os
 USERNAME = "rajeshchauhdary"
 GITHUB_API_URL = f"https://api.github.com/users/{USERNAME}/repos?sort=updated&per_page=10"
 OLLAMA_API_URL = "http://localhost:11434/api/generate"
-OLLAMA_MODEL = "llama3"  # Or your installed local model name
+OLLAMA_MODEL = "llama3"
 
 def fetch_repositories():
     print(f"Fetching repositories for {USERNAME} from GitHub REST API...")
@@ -21,12 +21,12 @@ def fetch_repositories():
         return []
 
 def analyze_with_ollama(repo_name, description, language):
-    prompt = f\"\"
-Analyze this GitHub repository and return ONLY a valid JSON object with keys: category, shortDesc, and highlights (array of 3 strings).
+    prompt = f"""
+Analyze this GitHub repository and return ONLY a valid JSON object with keys: category, shortDesc, fullDesc, and highlights (array of 3 strings).
 Repository Name: {repo_name}
 Description: {description}
 Primary Language: {language}
-\"\""
+"""
     payload = {
         "model": OLLAMA_MODEL,
         "prompt": prompt,
@@ -68,6 +68,7 @@ if __name__ == "__main__":
             ai_data = {
                 "category": lang if lang != "Unknown" else "Software Engineering",
                 "shortDesc": desc,
+                "fullDesc": desc,
                 "highlights": [f"Built using {lang}", "Maintained on GitHub", "Automated synchronization pipeline"]
             }
             
@@ -76,7 +77,7 @@ if __name__ == "__main__":
             "name": name,
             "category": ai_data.get("category", "Engineering"),
             "shortDesc": ai_data.get("shortDesc", desc),
-            "fullDesc": desc,
+            "fullDesc": ai_data.get("fullDesc", desc),
             "tags": [lang] if lang != "Unknown" else ["Python", "React"],
             "github": url,
             "demo": repo.get('homepage') or "#",
@@ -84,8 +85,10 @@ if __name__ == "__main__":
         })
     
     os.makedirs("src/data", exist_ok=True)
-    output_path = "src/data/generatedProjects.json"
+    output_path = "src/data/projectsData.js"
+    
+    file_content = f"export const projectsData = {json.dumps(processed_projects, indent=2)};\n"
     with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(processed_projects, f, indent=2)
+        f.write(file_content)
         
     print(f"Successfully generated project data at {output_path}!")
