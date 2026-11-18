@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import { GitBranch, GitCommit, GitPullRequest, Terminal } from 'lucide-react';
+import { Terminal } from 'lucide-react';
 
 export default function GithubActivity() {
   return (
@@ -16,8 +16,8 @@ export default function GithubActivity() {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 font-mono">
         <div className="border border-neutral-800 bg-neutral-900/40 p-6 space-y-2">
           <span className="text-xs text-neutral-500 uppercase tracking-wider">GitHub Profile</span>
-          <a href="https://github.com/rajeshchaudhary" target="_blank" rel="noopener noreferrer" className="block text-white font-bold hover:underline truncate">
-            @rajeshchaudhary
+          <a href="https://github.com/rajeshchauhdary" target="_blank" rel="noopener noreferrer" className="block text-white font-bold hover:underline truncate">
+            @rajeshchauhdary
           </a>
         </div>
         <div className="border border-neutral-800 bg-neutral-900/40 p-6 space-y-2">
