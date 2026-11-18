@@ -35,7 +35,7 @@ export default function Contact() {
               <span className="text-neutral-500 block text-xs">Profiles</span>
               <div className="space-y-1 pt-1">
                 <a href="https://www.linkedin.com/in/rajesh-chaudhary-9a6242273/" target="_blank" rel="noopener noreferrer" className="block text-neutral-300 hover:text-white underline">LinkedIn</a>
-                <a href="https://github.com/rajeshchaudhary" target="_blank" rel="noopener noreferrer" className="block text-neutral-300 hover:text-white underline">GitHub</a>
+                <a href="https://github.com/rajeshchauhdary" target="_blank" rel="noopener noreferrer" className="block text-neutral-300 hover:text-white underline">GitHub</a>
                 <a href="https://www.kaggle.com/rajeshchaudhary45" target="_blank" rel="noopener noreferrer" className="block text-neutral-300 hover:text-white underline">Kaggle</a>
               </div>
             </div>
