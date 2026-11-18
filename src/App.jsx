@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import AIAssistant from './components/AIAssistant';
 import Home from './pages/Home';
 import About from './pages/About';
 import Skills from './pages/Skills';
@@ -16,7 +17,7 @@ import Contact from './pages/Contact';
 export default function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-black text-white flex flex-col">
+      <div className="min-h-screen bg-black text-white flex flex-col relative">
         <Navbar />
         <main className="flex-grow">
           <Routes>
@@ -34,6 +35,7 @@ export default function App() {
             <Route path="*" element={<div className="p-24 text-center font-mono text-xl text-neutral-400">404 | Page Under Construction</div>} />
           </Routes>
         </main>
+        <AIAssistant />
         <footer className="border-t border-neutral-800 py-6 text-center text-xs font-mono text-neutral-500">
           © {new Date().getFullYear()} Rajesh Chaudhary. Built with React & Tailwind.
         </footer>
