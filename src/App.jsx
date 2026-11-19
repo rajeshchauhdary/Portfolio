@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import AIAssistant from './components/AIAssistant';
@@ -19,7 +19,7 @@ export default function App() {
     <Router>
       <div className="min-h-screen bg-black text-white flex flex-col relative">
         <Navbar />
-        <main className="flex-grow">
+        <main className="flex-grow lg:pl-56">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -36,7 +36,7 @@ export default function App() {
           </Routes>
         </main>
         <AIAssistant />
-        <footer className="border-t border-neutral-800 py-6 text-center text-xs font-mono text-neutral-500">
+        <footer className="lg:pl-56 border-t border-neutral-800 py-6 text-center text-xs font-mono text-neutral-500">
           © {new Date().getFullYear()} Rajesh Chaudhary. Built with React & Tailwind.
         </footer>
       </div>
