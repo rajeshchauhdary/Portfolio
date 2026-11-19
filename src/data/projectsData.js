@@ -1,5 +1,22 @@
 export const projectsData = [
   {
+    "id": "portfolio",
+    "name": "Portfolio",
+    "category": "JavaScript",
+    "shortDesc": "\ufeff# RAJESH.DEV \u2014 Developer Portfolio A monochrome, production-grade developer portfolio built with React, Vite, and Tailwind CSS v4, featuring automated GitHub README analysis and an interactive AI assistant.",
+    "fullDesc": "\ufeff# RAJESH.DEV \u2014 Developer Portfolio A monochrome, production-grade developer portfolio built with React, Vite, and Tailwind CSS v4, featuring automated GitHub README analysis and an interactive AI assistant.",
+    "tags": [
+      "JavaScript"
+    ],
+    "github": "https://github.com/rajeshchauhdary/Portfolio",
+    "demo": "#",
+    "highlights": [
+      "Developed primarily in JavaScript",
+      "Documented with project README and source repository",
+      "Automatically synchronized from GitHub"
+    ]
+  },
+  {
     "id": "edusity",
     "name": "Edusity",
     "category": "Software",
