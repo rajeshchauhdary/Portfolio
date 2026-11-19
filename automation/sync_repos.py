@@ -5,7 +5,7 @@ import os
 import re
 
 USERNAME = "rajeshchauhdary"
-GITHUB_API_URL = f"https://api.github.com/users/{USERNAME}/repos?sort=updated&per_page=10"
+GITHUB_API_URL = f"https://api.github.com/users/{USERNAME}/repos?sort=updated&per_page=30"
 OLLAMA_API_URL = "http://localhost:11434/api/generate"
 OLLAMA_MODEL = "llama3.2:3b"
 IGNORED_REPOS = {"rajeshchauhdary"}
