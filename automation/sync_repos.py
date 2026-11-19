@@ -1,4 +1,4 @@
-﻿import urllib.request
+import urllib.request
 import json
 import base64
 import os
@@ -7,8 +7,8 @@ import re
 USERNAME = "rajeshchauhdary"
 GITHUB_API_URL = f"https://api.github.com/users/{USERNAME}/repos?sort=updated&per_page=10"
 OLLAMA_API_URL = "http://localhost:11434/api/generate"
-OLLAMA_MODEL = "llama3"
-IGNORED_REPOS = {"Portfolio", "rajeshchauhdary"}
+OLLAMA_MODEL = "llama3.2:3b"
+IGNORED_REPOS = {"rajeshchauhdary"}
 
 def fetch_repositories():
     print(f"Fetching repositories for {USERNAME} from GitHub REST API...")
