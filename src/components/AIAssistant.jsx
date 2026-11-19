@@ -1,5 +1,5 @@
 ﻿import React, { useState } from 'react';
-import { MessageSquare, X, Send, Bot, User, Sparkles } from 'lucide-react';
+import { X, Send, Bot, User, Sparkles } from 'lucide-react';
 import { projectsData } from '../data/projectsData';
 
 export default function AIAssistant() {
@@ -18,13 +18,12 @@ export default function AIAssistant() {
     setMessages(newMessages);
     setInput('');
 
-    // Simulate smart RAG response based on user profile and projects
     setTimeout(() => {
       let aiResponse = "I focus on Artificial Intelligence, Machine Learning, Data Science, and Full-Stack Development. You can check out my Projects or Skills page for more details!";
       const queryLower = userQuery.toLowerCase();
 
       if (queryLower.includes('project') || queryLower.includes('work') || queryLower.includes('articul') || queryLower.includes('aapda') || queryLower.includes('edusity')) {
-        aiResponse = Rajesh has built several projects including . Check out the Projects page for architecture highlights and repository links!;
+        aiResponse = `Rajesh has built several projects including ${projectsData.map(p => p.name).join(', ')}. Check out the Projects page for architecture highlights and repository links!`;
       } else if (queryLower.includes('skill') || queryLower.includes('python') || queryLower.includes('react') || queryLower.includes('stack')) {
         aiResponse = "Rajesh's stack includes Python, TypeScript, React, Next.js, PyTorch, OpenCV, Docker, and AWS cloud architecture.";
       } else if (queryLower.includes('education') || queryLower.includes('university') || queryLower.includes('study')) {
@@ -69,12 +68,12 @@ export default function AIAssistant() {
             {messages.map((msg, idx) => (
               <div
                 key={idx}
-                className={lex items-start space-x-2 }
+                className={`flex items-start space-x-2 ${msg.sender === 'user' ? 'flex-row-reverse space-x-reverse' : ''}`}
               >
-                <div className={w-6 h-6 rounded-none flex items-center justify-center shrink-0 border }>
+                <div className={`w-6 h-6 rounded-none flex items-center justify-center shrink-0 border ${msg.sender === 'user' ? 'border-white bg-white text-black' : 'border-neutral-700 bg-neutral-900 text-white'}`}>
                   {msg.sender === 'user' ? <User className="w-3 h-3" /> : <Bot className="w-3 h-3" />}
                 </div>
-                <div className={p-3 max-w-[75%] leading-relaxed }>
+                <div className={`p-3 max-w-[75%] leading-relaxed ${msg.sender === 'user' ? 'bg-neutral-900 border border-neutral-800 text-white' : 'bg-neutral-950 border border-neutral-800 text-neutral-300'}`}>
                   {msg.text}
                 </div>
               </div>
