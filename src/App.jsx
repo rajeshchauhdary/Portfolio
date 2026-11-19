@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import AIAssistant from './components/AIAssistant';
@@ -15,11 +15,13 @@ import GithubActivity from './pages/GithubActivity';
 import Contact from './pages/Contact';
 
 export default function App() {
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
   return (
     <Router>
       <div className="min-h-screen bg-black text-white flex flex-col relative">
-        <Navbar />
-        <main className="flex-grow lg:pl-56">
+        <Navbar isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
+        <main className={`flex-grow transition-all duration-300 ${isCollapsed ? 'lg:pl-16' : 'lg:pl-56'}`}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -36,7 +38,7 @@ export default function App() {
           </Routes>
         </main>
         <AIAssistant />
-        <footer className="lg:pl-56 border-t border-neutral-800 py-6 text-center text-xs font-mono text-neutral-500">
+        <footer className={`border-t border-neutral-800 py-6 text-center text-xs font-mono text-neutral-500 transition-all duration-300 ${isCollapsed ? 'lg:pl-16' : 'lg:pl-56'}`}>
           © {new Date().getFullYear()} Rajesh Chaudhary. Built with React & Tailwind.
         </footer>
       </div>
