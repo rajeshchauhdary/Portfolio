@@ -131,26 +131,6 @@ export default function ProjectDetail() {
           </div>
         </section>
       )}
-
-      <div className="pt-2 flex items-center justify-between border-t border-white/10">
-        <Link
-          to="/projects"
-          className="text-xs font-mono uppercase tracking-[0.16em] text-neutral-400 hover:text-[#F8F7F2] transition-colors"
-        >
-          &larr; All Projects
-        </Link>
-
-        <a
-          href={project.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-xl bg-[#FACC15] hover:bg-[#FDE047] text-[#080807] px-6 py-3 text-sm font-medium transition-colors"
-        >
-          <Code2 className="w-4 h-4" />
-          <span>GitHub Repository</span>
-          <ArrowUpRight className="w-4 h-4" />
-        </a>
-      </div>
     </div>
   );
 }
