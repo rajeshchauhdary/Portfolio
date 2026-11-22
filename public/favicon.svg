@@ -1,5 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#09090b" stroke="#27272a" stroke-width="2"/>
-  <path d="M16 22l12 10-12 10" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="34" y1="42" x2="48" y2="42" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="22" fill="none" stroke="#18181B" stroke-width="11"/>
+  <g fill="none" stroke-width="8" stroke-linecap="butt" transform="rotate(-90 32 32)">
+    <!-- 5 equal 72-degree segments on circumference 2*pi*22 = 138.23 (each segment = 27.65) -->
+    <circle cx="32" cy="32" r="22" stroke="#0081C8" stroke-dasharray="28 138.23" stroke-dashoffset="0"/>
+    <circle cx="32" cy="32" r="22" stroke="#FCB131" stroke-dasharray="28 138.23" stroke-dashoffset="-27.65"/>
+    <circle cx="32" cy="32" r="22" stroke="#F8F7F2" stroke-dasharray="28 138.23" stroke-dashoffset="-55.30"/>
+    <circle cx="32" cy="32" r="22" stroke="#00A651" stroke-dasharray="28 138.23" stroke-dashoffset="-82.95"/>
+    <circle cx="32" cy="32" r="22" stroke="#EE334E" stroke-dasharray="28 138.23" stroke-dashoffset="-110.60"/>
+  </g>
 </svg>
