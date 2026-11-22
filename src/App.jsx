@@ -19,17 +19,32 @@ function ScrollToTop() {
   useEffect(() => {
     const html = document.documentElement;
     const prevBehavior = html.style.scrollBehavior;
-    html.style.scrollBehavior = 'auto';
+
     if (hash) {
-      const target = document.querySelector(hash);
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        return;
-      }
+      let attempts = 0;
+      const scrollToTarget = () => {
+        const target = document.querySelector(hash);
+        if (target) {
+          html.style.scrollBehavior = 'smooth';
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          setTimeout(() => {
+            html.style.scrollBehavior = prevBehavior || '';
+          }, 500);
+          return;
+        }
+        attempts += 1;
+        if (attempts < 25) {
+          requestAnimationFrame(scrollToTarget);
+        }
+      };
+      requestAnimationFrame(scrollToTarget);
+      return;
     }
+
+    html.style.scrollBehavior = 'auto';
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     html.style.scrollBehavior = prevBehavior || '';
-  }, [pathname]);
+  }, [pathname, hash]);
   return null;
 }
 
