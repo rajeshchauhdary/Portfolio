@@ -128,27 +128,77 @@ export default function Home() {
       {/* Main Content Container */}
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14">
         {/* Capabilities */}
-        <section id="perspective" className="snap-start scroll-mt-24 min-h-[calc(100vh-5.5rem)] flex flex-col justify-center py-10">
-          <p className="text-xs uppercase tracking-[0.22em] text-[#FACC15] mb-3">
+              <section
+        id="perspective"
+        className="snap-start scroll-mt-24 max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-16"
+      >
+        <div className="mb-8">
+          <p className="text-xs font-mono uppercase tracking-[0.22em] text-[#FACC15] mb-3">
             PERSPECTIVE
           </p>
-          <h2 className="text-4xl sm:text-5xl text-[#F8F7F2] tracking-tight mb-8">
+          <h2 className="text-3xl sm:text-5xl font-serif tracking-tight text-[#F8F7F2]">
             More than one lens.
           </h2>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {pillars.map((pillar) => (
-              <div
-                key={pillar.num}
-                className="rounded-2xl border border-white/10 bg-[#11110F] p-6 hover:border-[#FACC15]/40 transition-colors"
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="rounded-2xl border border-white/10 bg-[#0C0C0A] p-7 hover:border-[#FACC15]/50 transition-colors">
+            <span className="block text-xs font-mono text-[#FACC15] mb-4">01</span>
+            <h3 className="text-xl font-medium text-[#F8F7F2] mb-3">
+              Data Science &amp; ML
+            </h3>
+            <p className="text-sm leading-relaxed text-neutral-400">
+              End-to-end data analysis, automated feature engineering, cross-validated
+              predictive modeling, and data quality pipelines built for real-world decisions.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-[#FACC15]/40 bg-[#0C0C0A] p-7 hover:border-[#FACC15] transition-colors">
+            <span className="block text-xs font-mono text-[#FACC15] mb-4">02</span>
+            <h3 className="text-xl font-medium text-[#F8F7F2] mb-3">
+              AI, LLMs &amp; RAG Systems
+            </h3>
+            <p className="text-sm leading-relaxed text-neutral-400">
+              Hybrid retrieval pipelines with BM25, vector search, cross-encoder reranking,
+              semantic caching, and automated evaluation suites for reliable AI workflows.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-white/10 bg-[#0C0C0A] p-7 hover:border-[#FACC15]/50 transition-colors">
+            <span className="block text-xs font-mono text-[#FACC15] mb-4">03</span>
+            <h3 className="text-xl font-medium text-[#F8F7F2] mb-3">
+              Applied AI &amp; Engineering
+            </h3>
+            <p className="text-sm leading-relaxed text-neutral-400">
+              Medical imaging 3D surface reconstruction, geospatial mapping tools, and
+              production-ready APIs built with Python, FastAPI, React, and TypeScript.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-6 rounded-2xl border border-white/10 bg-[#0C0C0A]/70 px-6 py-4 flex flex-wrap items-center justify-between gap-3">
+          <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-neutral-500">
+            CORE DOMAINS
+          </span>
+          <div className="flex flex-wrap gap-2">
+            {[
+              'Data Science',
+              'Machine Learning',
+              'AI & LLMs',
+              'RAG Pipelines',
+              'Computer Vision',
+              'Python & React',
+            ].map((tag) => (
+              <span
+                key={tag}
+                className="rounded-lg border border-white/10 bg-[#080807] px-3 py-1 text-xs font-mono text-neutral-300"
               >
-                <span className="text-xs font-mono text-[#FACC15] block mb-4">{pillar.num}</span>
-                <h3 className="text-2xl text-[#F8F7F2] mb-3">{pillar.title}</h3>
-                <p className="text-sm text-neutral-300 leading-relaxed">{pillar.desc}</p>
-              </div>
+                {tag}
+              </span>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
         {/* Selected Work */}
         <section id="selected-work" className="snap-start scroll-mt-24 min-h-[calc(100vh-10.5rem)] flex flex-col justify-center py-8">
@@ -203,6 +253,7 @@ export default function Home() {
     </div>
   );
 }
+
 
 
 
