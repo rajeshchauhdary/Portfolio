@@ -14,8 +14,8 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 px-4 sm:px-6 pt-4 pb-2 bg-[#080807]/85 backdrop-blur-md">
-      <div className="max-w-6xl mx-auto rounded-2xl border border-white/10 bg-[#11110F]/95 px-5 sm:px-7 py-3.5 flex items-center justify-between gap-4">
+    <header className="sticky top-0 z-40 px-4 sm:px-6 pt-4 pb-2 bg-[#080807]/95 backdrop-blur-md">
+      <div className="max-w-6xl mx-auto rounded-2xl border border-white/10 bg-[#080807]/95 px-5 sm:px-7 py-3.5 flex items-center justify-between gap-4">
         <Link
           to="/"
           onClick={() => setOpen(false)}
@@ -68,7 +68,7 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <div className="lg:hidden max-w-6xl mx-auto mt-2 rounded-2xl border border-white/10 bg-[#11110F] px-5 py-4 space-y-3">
+        <div className="lg:hidden max-w-6xl mx-auto mt-2 rounded-2xl border border-white/10 bg-[#0C0C0A] px-5 py-4 space-y-3">
           <div className="flex flex-col space-y-2.5 text-sm">
             {navLinks.map((item) => (
               <NavLink
@@ -109,3 +109,4 @@ export default function Navbar() {
     </header>
   );
 }
+
