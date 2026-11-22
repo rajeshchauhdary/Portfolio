@@ -106,16 +106,16 @@ export default function Contact() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-8 pb-16 space-y-10">
-      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 border-b border-white/10 pb-8">
-        <div className="space-y-3">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-6 pb-14 space-y-8">
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 border-b border-white/10 pb-6">
+        <div className="space-y-2">
           <span className="inline-block text-xs font-mono text-[#FACC15] uppercase tracking-[0.22em]">
             CONTACT
           </span>
           <h1 className="text-3xl sm:text-5xl font-serif tracking-tight text-[#F8F7F2]">
             Let&apos;s connect.
           </h1>
-          <p className="text-neutral-400 text-base sm:text-lg max-w-2xl leading-relaxed">
+          <p className="text-neutral-400 text-sm sm:text-base max-w-2xl leading-relaxed">
             Reach out for internships, junior engineering roles, AI/data collaborations, or project inquiries.
           </p>
         </div>
@@ -127,8 +127,8 @@ export default function Contact() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-        <div className="lg:col-span-5 flex flex-col justify-between gap-6">
-          <div className="rounded-2xl border border-white/10 bg-[#0C0C0A] p-6 sm:p-7 space-y-5 hover:border-[#FACC15]/40 transition-colors">
+        <div className="lg:col-span-5 flex flex-col justify-between gap-5">
+          <div className="rounded-2xl border border-white/10 bg-[#0C0C0A] p-5 sm:p-6 space-y-4 hover:border-[#FACC15]/40 transition-colors">
             <div className="flex items-center justify-between">
               <span className="text-xs font-mono text-[#FACC15] uppercase tracking-[0.2em]">
                 DIRECT GMAIL
@@ -138,7 +138,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="flex items-center justify-between gap-2 rounded-xl border border-white/10 bg-[#080807] px-3.5 py-3">
+            <div className="flex items-center justify-between gap-2 rounded-xl border border-white/10 bg-[#080807] px-3.5 py-2.5">
               <span className="text-xs sm:text-sm font-mono text-[#F8F7F2] truncate">
                 {EMAIL}
               </span>
@@ -173,7 +173,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="flex-1 rounded-2xl border border-white/10 bg-[#0C0C0A] p-6 sm:p-7 flex flex-col justify-between space-y-4 hover:border-[#FACC15]/40 transition-colors">
+          <div className="flex-1 rounded-2xl border border-white/10 bg-[#0C0C0A] p-5 sm:p-6 flex flex-col justify-between space-y-3 hover:border-[#FACC15]/40 transition-colors">
             <span className="block text-xs font-mono text-[#FACC15] uppercase tracking-[0.2em]">
               SOCIALS &amp; PROFILES
             </span>
@@ -187,7 +187,7 @@ export default function Contact() {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="rounded-xl border border-white/10 bg-[#080807] p-3.5 hover:border-[#FACC15]/50 transition-colors group flex flex-col justify-between gap-2.5"
+                    className="rounded-xl border border-white/10 bg-[#080807] p-3 hover:border-[#FACC15]/50 transition-colors group flex flex-col justify-between gap-2"
                   >
                     <div className="flex items-center justify-between">
                       <Icon className="w-4 h-4 text-[#FACC15]" />
@@ -208,9 +208,9 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="lg:col-span-7 rounded-2xl border border-white/10 bg-[#0C0C0A] p-6 sm:p-8 flex flex-col justify-between">
+        <div className="lg:col-span-7 rounded-2xl border border-white/10 bg-[#0C0C0A] p-5 sm:p-7 flex flex-col justify-between">
           {status === 'success' ? (
-            <div className="my-auto py-12 text-center space-y-4">
+            <div className="my-auto py-10 text-center space-y-4">
               <div className="w-12 h-12 rounded-2xl border border-[#FACC15]/30 bg-[#FACC15]/10 flex items-center justify-center mx-auto">
                 <CheckCircle2 className="w-6 h-6 text-[#FACC15]" />
               </div>
@@ -230,8 +230,8 @@ export default function Contact() {
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="space-y-1">
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="space-y-0.5">
                 <span className="text-xs font-mono text-[#FACC15] uppercase tracking-[0.2em]">
                   SEND A DIRECT MESSAGE
                 </span>
@@ -240,7 +240,7 @@ export default function Contact() {
                 </p>
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-1.5">
                 <label className="block text-xs font-mono uppercase tracking-wider text-neutral-400">
                   Topic
                 </label>
@@ -266,7 +266,7 @@ export default function Contact() {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-2">
+                <div className="space-y-1.5">
                   <label className="block text-xs font-mono uppercase tracking-wider text-neutral-400">
                     Your Name
                   </label>
@@ -275,12 +275,12 @@ export default function Contact() {
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full rounded-xl bg-[#080807] border border-white/10 px-4 py-3 text-[#F8F7F2] placeholder:text-neutral-600 focus:outline-none focus:border-[#FACC15] text-sm transition-colors"
+                    className="w-full rounded-xl bg-[#080807] border border-white/10 px-4 py-2.5 text-[#F8F7F2] placeholder:text-neutral-600 focus:outline-none focus:border-[#FACC15] text-sm transition-colors"
                     placeholder="Your name"
                   />
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-1.5">
                   <label className="block text-xs font-mono uppercase tracking-wider text-neutral-400">
                     Your Email
                   </label>
@@ -289,28 +289,28 @@ export default function Contact() {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full rounded-xl bg-[#080807] border border-white/10 px-4 py-3 text-[#F8F7F2] placeholder:text-neutral-600 focus:outline-none focus:border-[#FACC15] text-sm transition-colors"
+                    className="w-full rounded-xl bg-[#080807] border border-white/10 px-4 py-2.5 text-[#F8F7F2] placeholder:text-neutral-600 focus:outline-none focus:border-[#FACC15] text-sm transition-colors"
                     placeholder="you@example.com"
                   />
                 </div>
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-1.5">
                 <label className="block text-xs font-mono uppercase tracking-wider text-neutral-400">
                   Message
                 </label>
                 <textarea
-                  rows="5"
+                  rows="4"
                   required
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="w-full rounded-xl bg-[#080807] border border-white/10 px-4 py-3 text-[#F8F7F2] placeholder:text-neutral-600 focus:outline-none focus:border-[#FACC15] text-sm transition-colors"
+                  className="w-full rounded-xl bg-[#080807] border border-white/10 px-4 py-2.5 text-[#F8F7F2] placeholder:text-neutral-600 focus:outline-none focus:border-[#FACC15] text-sm transition-colors"
                   placeholder="Tell me about the role, project, or question..."
                 />
               </div>
 
               {status === 'error' && (
-                <div className="flex items-center gap-2 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-xs text-red-300">
+                <div className="flex items-center gap-2 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-2.5 text-xs text-red-300">
                   <AlertCircle className="w-4 h-4 shrink-0" />
                   <span>
                     Could not send right now. Please try again or copy {EMAIL} directly.
@@ -321,7 +321,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={status === 'sending'}
-                className="w-full rounded-xl bg-[#FACC15] hover:bg-[#FDE047] disabled:opacity-60 text-[#080807] font-semibold py-3.5 px-6 transition-colors flex items-center justify-center gap-2 text-sm"
+                className="w-full rounded-xl bg-[#FACC15] hover:bg-[#FDE047] disabled:opacity-60 text-[#080807] font-semibold py-3 px-6 transition-colors flex items-center justify-center gap-2 text-sm"
               >
                 <Send className="w-4 h-4" />
                 <span>{status === 'sending' ? 'Sending...' : 'Send Message'}</span>
