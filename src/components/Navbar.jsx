@@ -1,76 +1,109 @@
 ﻿import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Terminal } from 'lucide-react';
+import { Link, NavLink } from 'react-router-dom';
+import { ArrowDown, ArrowUpRight, Menu, X } from 'lucide-react';
+
+const navLinks = [
+  { label: 'Work', to: '/projects' },
+  { label: 'About', to: '/about' },
+  { label: 'Skills', to: '/skills' },
+  { label: 'Experience', to: '/experience' },
+  { label: 'Credentials', to: '/achievements' },
+];
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
-
-  const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Skills', path: '/skills' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'Experience', path: '/experience' },
-    { name: 'Education', path: '/education' },
-    { name: 'Achievements', path: '/achievements' },
-    { name: 'Certifications', path: '/certifications' },
-    { name: 'Activity', path: '/github-activity' },
-    { name: 'Contact', path: '/contact' },
-  ];
+  const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-neutral-800 bg-black/80 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center space-x-2 text-white font-mono font-bold tracking-wider">
-            <Terminal className="w-5 h-5 text-white" />
-            <span>RAJESH.DEV</span>
-          </Link>
+    <header className="sticky top-0 z-40 px-4 sm:px-6 pt-4 pb-2 bg-[#080807]/85 backdrop-blur-md">
+      <div className="max-w-6xl mx-auto rounded-2xl border border-white/10 bg-[#11110F]/95 px-5 sm:px-7 py-3.5 flex items-center justify-between gap-4">
+        <Link
+          to="/"
+          onClick={() => setOpen(false)}
+          className="text-xl sm:text-2xl font-serif tracking-tight text-[#F8F7F2] hover:text-[#FACC15] transition-colors shrink-0"
+        >
+          Rajesh Chaudhary
+        </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center space-x-6 text-sm font-medium">
-            {navLinks.map((link) => {
-              const isActive = location.pathname === link.path;
-              return (
-                <Link
-                  key={link.name}
-                  to={link.path}
-                  className={`transition-colors duration-200 ${
-                    isActive ? 'text-white underline underline-offset-8' : 'text-neutral-400 hover:text-white'
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              );
-            })}
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <div className="lg:hidden flex items-center">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-neutral-400 hover:text-white focus:outline-none"
+        <nav className="hidden lg:flex items-center gap-7 text-sm text-neutral-300">
+          {navLinks.map((item) => (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              className={({ isActive }) =>
+                `transition-colors hover:text-[#F8F7F2] ${
+                  isActive ? 'text-[#F8F7F2] font-medium' : 'text-neutral-300'
+                }`
+              }
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-        </div>
+              {item.label}
+            </NavLink>
+          ))}
+
+          <a
+            href="/resume.pdf"
+            download
+            className="inline-flex items-center gap-1 font-medium text-[#FACC15] hover:text-[#FDE047] transition-colors"
+          >
+            <span>Resume</span>
+            <ArrowDown className="w-3.5 h-3.5" />
+          </a>
+
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-1.5 rounded-xl bg-[#FACC15] hover:bg-[#FDE047] text-[#080807] font-medium px-4 py-2 text-xs sm:text-sm transition-colors"
+          >
+            <span>Let&apos;s connect</span>
+            <ArrowUpRight className="w-4 h-4" />
+          </Link>
+        </nav>
+
+        <button
+          type="button"
+          onClick={() => setOpen((prev) => !prev)}
+          aria-label="Toggle navigation menu"
+          className="lg:hidden inline-flex items-center justify-center rounded-lg border border-white/15 p-2 text-neutral-200 hover:text-[#FACC15] hover:border-[#FACC15]/50 transition-colors"
+        >
+          {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        </button>
       </div>
 
-      {/* Mobile Menu Dropdown */}
-      {isOpen && (
-        <div className="lg:hidden border-b border-neutral-800 bg-black px-4 pt-2 pb-4 space-y-2">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              to={link.path}
-              onClick={() => setIsOpen(false)}
-              className="block px-3 py-2 rounded-md text-base font-medium text-neutral-300 hover:text-white hover:bg-neutral-900"
+      {open && (
+        <div className="lg:hidden max-w-6xl mx-auto mt-2 rounded-2xl border border-white/10 bg-[#11110F] px-5 py-4 space-y-3">
+          <div className="flex flex-col space-y-2.5 text-sm">
+            {navLinks.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                onClick={() => setOpen(false)}
+                className={({ isActive }) =>
+                  `py-1 transition-colors ${
+                    isActive ? 'text-[#FACC15] font-medium' : 'text-neutral-300 hover:text-[#F8F7F2]'
+                  }`
+                }
+              >
+                {item.label}
+              </NavLink>
+            ))}
+          </div>
+          <div className="pt-2 border-t border-white/10 flex items-center justify-between gap-3">
+            <a
+              href="/resume.pdf"
+              download
+              onClick={() => setOpen(false)}
+              className="inline-flex items-center gap-1 text-sm font-medium text-[#FACC15] hover:text-[#FDE047]"
             >
-              {link.name}
+              <span>Resume</span>
+              <ArrowDown className="w-3.5 h-3.5" />
+            </a>
+            <Link
+              to="/contact"
+              onClick={() => setOpen(false)}
+              className="inline-flex items-center gap-1.5 rounded-xl bg-[#FACC15] hover:bg-[#FDE047] text-[#080807] font-medium px-4 py-2 text-xs transition-colors"
+            >
+              <span>Let&apos;s connect</span>
+              <ArrowUpRight className="w-4 h-4" />
             </Link>
-          ))}
+          </div>
         </div>
       )}
     </header>

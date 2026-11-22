@@ -34,11 +34,16 @@ export default function App() {
             <Route path="*" element={<div className="p-24 text-center font-mono text-xl text-neutral-400">404 | Page Under Construction</div>} />
           </Routes>
         </main>
-        <footer className="border-t border-neutral-800 py-6 text-center text-xs font-mono text-neutral-500">
-          © {new Date().getFullYear()} Rajesh Chaudhary. Built with React & Tailwind.
+        <footer className="px-4 sm:px-6 pb-8 pt-2">
+          <div className="max-w-6xl mx-auto border-t border-neutral-800/90 pt-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] font-mono uppercase tracking-[0.18em] text-neutral-500">
+            <span>© {new Date().getFullYear()} RAJESH CHAUDHARY</span>
+            <span>SYSTEMS OVER HYPE. TESTED IN PRACTICE.</span>
+            <span>SATDOBATO, LALITPUR, NEPAL</span>
+          </div>
         </footer>
       </div>
     </Router>
   );
 }
+
 
