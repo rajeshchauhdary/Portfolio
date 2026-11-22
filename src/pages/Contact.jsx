@@ -60,6 +60,7 @@ export default function Contact() {
   const [message, setMessage] = useState('');
   const [honeypot, setHoneypot] = useState('');
   const [status, setStatus] = useState('idle'); // idle | sending | success | error
+  const [errorDetail, setErrorDetail] = useState('');
   const [cooldown, setCooldown] = useState(0);
   const [copied, setCopied] = useState(false);
 
@@ -85,34 +86,46 @@ export default function Contact() {
     e.preventDefault();
     if (cooldown > 0 || status === 'sending') return;
 
-    // Silent drop if hidden bot honeypot field is filled
+    const cleanName = name.trim();
+    const cleanEmail = email.trim();
+    const cleanMessage = message.trim();
+
+    if (cleanMessage.length < 3) {
+      setStatus('error');
+      setErrorDetail('Please write a message of at least 3 characters.');
+      return;
+    }
+
     if (honeypot.trim() !== '') {
       setStatus('success');
       return;
     }
 
     setStatus('sending');
+    setErrorDetail('');
 
     try {
+      const formData = new URLSearchParams();
+      formData.append('topic', topic);
+      formData.append('name', cleanName);
+      formData.append('email', cleanEmail);
+      formData.append('message', cleanMessage);
+      formData.append('_honey', honeypot);
+      formData.append('_subject', `[${topic}] Portfolio Inquiry from ${cleanName}`);
+      formData.append('_replyto', cleanEmail);
+      formData.append('_template', 'table');
+      formData.append('_captcha', 'false');
+
       const res = await fetch(`https://formsubmit.co/ajax/${EMAIL}`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
           Accept: 'application/json',
         },
-        body: JSON.stringify({
-          topic,
-          name: name.trim(),
-          email: email.trim(),
-          message: message.trim(),
-          _honey: honeypot,
-          _subject: `[${topic}] Portfolio Inquiry from ${name.trim()}`,
-          _replyto: email.trim(),
-          _template: 'table',
-        }),
+        body: formData.toString(),
       });
 
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
       if (res.ok && (data.success === 'true' || data.success === true)) {
         setStatus('success');
         setCooldown(COOLDOWN_SECONDS);
@@ -121,9 +134,16 @@ export default function Contact() {
         setMessage('');
       } else {
         setStatus('error');
+        setErrorDetail(
+          data.message ||
+            'Form delivery was blocked or rejected. Check browser shields/extensions or copy the email directly.'
+        );
       }
     } catch {
       setStatus('error');
+      setErrorDetail(
+        'Network request failed. Check your connection or browser shield/ad-blocker, or copy the email directly.'
+      );
     }
   };
 
@@ -313,6 +333,7 @@ export default function Contact() {
                   <input
                     type="text"
                     required
+                    minLength={2}
                     maxLength={100}
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -344,6 +365,7 @@ export default function Contact() {
                 <textarea
                   rows="4"
                   required
+                  minLength={3}
                   maxLength={2500}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
@@ -353,10 +375,11 @@ export default function Contact() {
               </div>
 
               {status === 'error' && (
-                <div className="flex items-center gap-2 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-2.5 text-xs text-red-300">
-                  <AlertCircle className="w-4 h-4 shrink-0" />
+                <div className="flex items-start gap-2.5 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-xs text-red-300">
+                  <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
                   <span>
-                    Could not send right now. Please try again or copy {EMAIL} directly.
+                    {errorDetail ||
+                      `Could not send right now. Please try again or copy ${EMAIL} directly.`}
                   </span>
                 </div>
               )}
