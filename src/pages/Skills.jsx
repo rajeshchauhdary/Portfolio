@@ -16,9 +16,9 @@ const skillGroups = [
     number: '01',
     filter: 'Core & Web',
     title: 'Core Languages',
-    subtitle: 'Primary languages for data analysis, backend services, and cross-platform apps.',
+    subtitle: 'Primary languages for data analysis, backend services, and web apps.',
     icon: Terminal,
-    skills: ['Python', 'SQL', 'TypeScript', 'JavaScript', 'C', 'Go', 'Dart'],
+    skills: ['Python', 'SQL', 'TypeScript', 'JavaScript', 'C'],
   },
   {
     number: '02',
@@ -70,19 +70,17 @@ const skillGroups = [
   {
     number: '05',
     filter: 'Core & Web',
-    title: 'Web, Mobile & Databases',
-    subtitle: 'Responsive interfaces, high-speed APIs, caching layers, and relational/NoSQL stores.',
+    title: 'Web & Databases',
+    subtitle: 'Responsive interfaces, fast REST APIs, and relational or document storage.',
     icon: Layers,
     skills: [
       'React',
       'Next.js',
       'FastAPI',
       'Django',
-      'Flutter',
       'Tailwind CSS',
       'PostgreSQL',
       'MongoDB',
-      'Redis',
     ],
   },
   {
@@ -173,13 +171,13 @@ export default function Skills() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch">
         {visibleGroups.map((cat) => {
           const Icon = cat.icon;
           return (
             <div
               key={cat.number}
-              className="rounded-2xl border border-white/10 bg-[#0C0C0A] p-6 space-y-4 hover:border-[#FACC15]/40 transition-colors"
+              className="h-full flex flex-col rounded-2xl border border-white/10 bg-[#0C0C0A] p-6 space-y-4 hover:border-[#FACC15]/40 transition-colors"
             >
               <div className="flex items-center justify-between text-xs font-mono text-[#FACC15]">
                 <span>{cat.number}</span>
@@ -197,7 +195,7 @@ export default function Skills() {
                 </p>
               </div>
 
-              <div className="pt-3 border-t border-white/10 flex flex-wrap gap-2">
+              <div className="pt-3.5 border-t border-white/10 flex flex-wrap content-start gap-2 flex-1">
                 {cat.skills.map((skill) => (
                   <span
                     key={skill}
@@ -216,13 +214,13 @@ export default function Skills() {
         <span className="block text-xs font-mono text-[#FACC15] uppercase tracking-[0.22em]">
           ENGINEERING WORKFLOW
         </span>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-stretch">
           {pillars.map((pillar) => {
             const Icon = pillar.icon;
             return (
               <div
                 key={pillar.label}
-                className="rounded-2xl border border-white/10 bg-[#0C0C0A] p-6 space-y-3"
+                className="h-full flex flex-col rounded-2xl border border-white/10 bg-[#0C0C0A] p-6 space-y-3"
               >
                 <div className="flex items-center justify-between">
                   <span className="text-[11px] font-mono text-[#FACC15] uppercase tracking-[0.18em]">
