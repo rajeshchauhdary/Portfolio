@@ -35,8 +35,8 @@ function XIcon({ className }) {
 const profiles = [
   {
     name: 'GitHub',
-    handle: '@rajeshchaudhary',
-    href: 'https://github.com/rajeshchaudhary',
+    handle: '@rajeshchauhdary',
+    href: 'https://github.com/rajeshchauhdary',
     icon: GitHubIcon,
   },
   {
