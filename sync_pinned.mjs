@@ -88,7 +88,7 @@ async function main() {
     console.log('Enriching pinned repositories with local Ollama (llama3.2:3b)...');
     for (let i = 0; i < projects.length; i++) {
       if (!projects[i].pinned) continue;
-      const repoFullName = (projects[i].github || '').replace('[https://github.com/](https://github.com/)', '');
+      const repoFullName = (projects[i].github || '').replace('https://github.com/', '');
       const readme = await fetchReadme(repoFullName);
       projects[i] = await enrichWithOllama(projects[i], readme);
       console.log(`Enriched: ${projects[i].name}`);
@@ -100,3 +100,4 @@ async function main() {
 }
 
 main();
+

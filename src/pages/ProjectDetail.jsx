@@ -102,7 +102,7 @@ export default function ProjectDetail() {
 
   useEffect(() => {
     if (!project?.github) return;
-    const repoPath = project.github.replace('[https://github.com/](https://github.com/)', '').replace(/\/$/, '');
+    const repoPath = project.github.replace('https://github.com/', '').replace(/\/$/, '');
     let cancelled = false;
 
     async function fetchReadme() {
@@ -299,8 +299,7 @@ export default function ProjectDetail() {
       )}
 
       <div className="pt-2 flex items-center justify-between border-t border-white/10">
-        <Link className="text-xs font-mono uppercase tracking-[0.16em] text-neutral-400 hover:text-[#F8F7F2] transition-colors" to="/projects">
-          ← All Projects
+        <Link className="text-xs font-mono uppercase tracking-[0.16em] text-neutral-400 hover:text-[#F8F7F2] transition-colors" to="/projects">`n          &larr; All Projects
         </Link>
 
         <a
@@ -317,3 +316,4 @@ export default function ProjectDetail() {
     </div>
   );
 }
+
