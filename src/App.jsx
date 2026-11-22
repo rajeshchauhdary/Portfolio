@@ -1,5 +1,5 @@
-﻿import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+﻿import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -13,9 +13,23 @@ import Achievements from './pages/Achievements';
 import GithubActivity from './pages/GithubActivity';
 import Contact from './pages/Contact';
 
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    const html = document.documentElement;
+    const prevBehavior = html.style.scrollBehavior;
+    html.style.scrollBehavior = 'auto';
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    html.style.scrollBehavior = prevBehavior || '';
+  }, [pathname]);
+  return null;
+}
+
 export default function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-[#080807] text-[#F8F7F2] flex flex-col">
         <Navbar />
         <main className="flex-grow">
