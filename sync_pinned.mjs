@@ -6,7 +6,7 @@ const DATA_PATH = path.resolve('src/data/projectsData.js');
 const USE_OLLAMA = process.argv.includes('--ollama');
 
 async function getPinnedRepos(username) {
-  const res = await fetch(`[https://github.com/$](https://github.com/$){username}`, {
+  const res = await fetch('https://github.com/' + username, {
     headers: { 'User-Agent': 'Mozilla/5.0' },
   });
   if (!res.ok) throw new Error(`GitHub returned ${res.status}`);
@@ -19,7 +19,7 @@ async function getPinnedRepos(username) {
 async function fetchReadme(repoFullName) {
   for (const branch of ['main', 'master']) {
     try {
-      const res = await fetch(`[https://raw.githubusercontent.com/$](https://raw.githubusercontent.com/$){repoFullName}/${branch}/README.md`);
+      const res = await fetch(`https://raw.githubusercontent.com/${repoFullName}/${branch}/README.md`);
       if (res.ok) return await res.text();
     } catch {}
   }
@@ -100,4 +100,3 @@ async function main() {
 }
 
 main();
-

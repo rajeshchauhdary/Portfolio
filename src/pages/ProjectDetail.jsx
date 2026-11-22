@@ -110,7 +110,7 @@ export default function ProjectDetail() {
       for (const branch of ['main', 'master']) {
         try {
           const res = await fetch(
-            `[https://raw.githubusercontent.com/$](https://raw.githubusercontent.com/$){repoPath}/${branch}/README.md`
+            `https://raw.githubusercontent.com/${repoPath}/${branch}/README.md`
           );
           if (res.ok) {
             const text = await res.text();
