@@ -4,18 +4,16 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  esbuild: {
-    drop: ['console', 'debugger'],
-  },
   build: {
     target: 'es2020',
     cssCodeSplit: true,
     sourcemap: false,
     rollupOptions: {
       output: {
-        manualChunks: {
-          router: ['react-router-dom'],
-          icons: ['lucide-react'],
+        manualChunks(id) {
+          if (id.includes('node_modules/react-router-dom')) return 'router'
+          if (id.includes('node_modules/lucide-react')) return 'icons'
+          return undefined
         },
       },
     },
