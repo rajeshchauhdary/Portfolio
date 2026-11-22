@@ -3,9 +3,9 @@ import { Link, NavLink } from 'react-router-dom';
 import { ArrowDown, ArrowUpRight, Menu, X } from 'lucide-react';
 
 const navLinks = [
-  { label: 'Work', to: '/projects' },
   { label: 'About', to: '/about' },
   { label: 'Skills', to: '/skills' },
+  { label: 'Projects', to: '/projects' },
   { label: 'Experience', to: '/experience' },
   { label: 'Credentials', to: '/achievements' },
 ];
