@@ -98,7 +98,10 @@ export default function About() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-        <div className="lg:col-span-7 rounded-2xl border border-white/10 bg-[#0C0C0A] p-6 sm:p-8 flex flex-col justify-between space-y-5 text-neutral-300 text-base leading-relaxed">
+        <div className="lg:col-span-7 rounded-2xl border border-white/10 bg-[#0C0C0A] p-6 sm:p-8 space-y-4 text-neutral-300 text-base leading-relaxed">
+          <span className="block text-xs font-mono text-[#FACC15] uppercase tracking-[0.22em] pb-1">
+            WHO I AM
+          </span>
           <p>
             Hi, I&apos;m <span className="text-[#F8F7F2] font-medium">Rajesh Chaudhary</span>—a final-year{' '}
             <span className="text-[#F8F7F2] font-medium">BSc CSIT</span> student in Lalitpur, Nepal. I enjoy taking a messy real-world problem, exploring the data, and shipping a clean product people can actually use.
