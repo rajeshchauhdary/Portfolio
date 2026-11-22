@@ -1,4 +1,4 @@
-﻿import React, { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -74,7 +74,7 @@ export default function App() {
         <footer className="px-4 sm:px-6 pb-8 pt-2">
           <div className="max-w-6xl mx-auto border-t border-neutral-800/90 pt-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] font-mono uppercase tracking-[0.18em] text-neutral-500">
             <span>© {new Date().getFullYear()} RAJESH CHAUDHARY</span>
-            <span>SYSTEMS OVER HYPE. TESTED IN PRACTICE.</span>
+            <span title="This site uses zero cookies, zero ad trackers, and strict HTTPS security headers.">ZERO COOKIES · HTTPS HARDENED</span>
             <span>SATDOBATO, LALITPUR, NEPAL</span>
           </div>
         </footer>

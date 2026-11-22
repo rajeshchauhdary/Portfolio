@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Mail,
   MapPin,
@@ -13,9 +13,11 @@ import {
   Code2,
   Sparkles,
   MessageSquare,
+  ShieldCheck,
 } from 'lucide-react';
 
 const EMAIL = 'rajeshchaaudhary74@gmail.com';
+const COOLDOWN_SECONDS = 30;
 
 const inquiryTopics = [
   'Internship / Junior Role',
@@ -56,8 +58,18 @@ export default function Contact() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [honeypot, setHoneypot] = useState('');
   const [status, setStatus] = useState('idle'); // idle | sending | success | error
+  const [cooldown, setCooldown] = useState(0);
   const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    if (cooldown <= 0) return undefined;
+    const timer = setInterval(() => {
+      setCooldown((prev) => (prev > 1 ? prev - 1 : 0));
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [cooldown]);
 
   const handleCopyEmail = async () => {
     try {
@@ -71,6 +83,14 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (cooldown > 0 || status === 'sending') return;
+
+    // Silent drop if hidden bot honeypot field is filled
+    if (honeypot.trim() !== '') {
+      setStatus('success');
+      return;
+    }
+
     setStatus('sending');
 
     try {
@@ -82,11 +102,12 @@ export default function Contact() {
         },
         body: JSON.stringify({
           topic,
-          name,
-          email,
-          message,
-          _subject: `[${topic}] Portfolio Inquiry from ${name}`,
-          _replyto: email,
+          name: name.trim(),
+          email: email.trim(),
+          message: message.trim(),
+          _honey: honeypot,
+          _subject: `[${topic}] Portfolio Inquiry from ${name.trim()}`,
+          _replyto: email.trim(),
           _template: 'table',
         }),
       });
@@ -94,6 +115,7 @@ export default function Contact() {
       const data = await res.json();
       if (res.ok && (data.success === 'true' || data.success === true)) {
         setStatus('success');
+        setCooldown(COOLDOWN_SECONDS);
         setName('');
         setEmail('');
         setMessage('');
@@ -223,21 +245,39 @@ export default function Contact() {
               </p>
               <button
                 type="button"
+                disabled={cooldown > 0}
                 onClick={() => setStatus('idle')}
-                className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-[#080807] hover:border-[#FACC15]/50 px-4 py-2 text-xs font-mono text-neutral-300 hover:text-[#FACC15] transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-[#080807] hover:border-[#FACC15]/50 disabled:opacity-50 px-4 py-2 text-xs font-mono text-neutral-300 hover:text-[#FACC15] transition-colors"
               >
-                Send another message
+                {cooldown > 0 ? `Available in ${cooldown}s` : 'Send another message'}
               </button>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="space-y-0.5">
-                <span className="text-xs font-mono text-[#FACC15] uppercase tracking-[0.2em]">
-                  SEND A DIRECT MESSAGE
+              <input
+                type="text"
+                name="_honey"
+                tabIndex="-1"
+                autoComplete="off"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+                className="hidden"
+                aria-hidden="true"
+              />
+
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div className="space-y-0.5">
+                  <span className="text-xs font-mono text-[#FACC15] uppercase tracking-[0.2em]">
+                    SEND A DIRECT MESSAGE
+                  </span>
+                  <p className="text-xs text-neutral-400">
+                    Delivered straight to my Gmail—no external mail client needed.
+                  </p>
+                </div>
+                <span className="inline-flex items-center gap-1 text-[11px] font-mono text-neutral-400">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#FACC15]" />
+                  <span>TLS Encrypted</span>
                 </span>
-                <p className="text-xs text-neutral-400">
-                  Delivered straight to my Gmail—no external mail client needed.
-                </p>
               </div>
 
               <div className="space-y-1.5">
@@ -273,6 +313,7 @@ export default function Contact() {
                   <input
                     type="text"
                     required
+                    maxLength={100}
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     className="w-full rounded-xl bg-[#080807] border border-white/10 px-4 py-2.5 text-[#F8F7F2] placeholder:text-neutral-600 focus:outline-none focus:border-[#FACC15] text-sm transition-colors"
@@ -287,6 +328,7 @@ export default function Contact() {
                   <input
                     type="email"
                     required
+                    maxLength={120}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="w-full rounded-xl bg-[#080807] border border-white/10 px-4 py-2.5 text-[#F8F7F2] placeholder:text-neutral-600 focus:outline-none focus:border-[#FACC15] text-sm transition-colors"
@@ -302,6 +344,7 @@ export default function Contact() {
                 <textarea
                   rows="4"
                   required
+                  maxLength={2500}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   className="w-full rounded-xl bg-[#080807] border border-white/10 px-4 py-2.5 text-[#F8F7F2] placeholder:text-neutral-600 focus:outline-none focus:border-[#FACC15] text-sm transition-colors"
@@ -320,11 +363,17 @@ export default function Contact() {
 
               <button
                 type="submit"
-                disabled={status === 'sending'}
+                disabled={status === 'sending' || cooldown > 0}
                 className="w-full rounded-xl bg-[#FACC15] hover:bg-[#FDE047] disabled:opacity-60 text-[#080807] font-semibold py-3 px-6 transition-colors flex items-center justify-center gap-2 text-sm"
               >
                 <Send className="w-4 h-4" />
-                <span>{status === 'sending' ? 'Sending...' : 'Send Message'}</span>
+                <span>
+                  {status === 'sending'
+                    ? 'Sending...'
+                    : cooldown > 0
+                    ? `Please wait ${cooldown}s`
+                    : 'Send Message'}
+                </span>
               </button>
             </form>
           )}
