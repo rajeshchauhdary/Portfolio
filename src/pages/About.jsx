@@ -108,7 +108,7 @@ export default function About() {
           </p>
 
           <p>
-            My main focus is <span className="text-[#F8F7F2] font-medium">Data Science, Machine Learning, and AI apps</span> (including RAG search and smart agents). Instead of leaving models stuck inside notebooks, I wrap them into full web apps with Python, TypeScript, React, and FastAPI.
+            My main focus is <span className="text-[#F8F7F2] font-medium">Data Science, Machine Learning, and AI apps</span> (including RAG search and smart agents). I also actively sharpen my modeling skills in <span className="text-[#F8F7F2] font-medium">Kaggle competitions and hackathons</span>—and instead of leaving models stuck inside notebooks, I ship them as full web apps with Python, TypeScript, React, and FastAPI.
           </p>
 
           <p>
