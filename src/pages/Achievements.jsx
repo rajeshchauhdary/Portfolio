@@ -25,12 +25,12 @@ const certifications = [
   {
     number: '02',
     category: 'Data & Software',
-    issuer: 'Mindrisers Consortium Pvt. Ltd.',
-    badge: 'Certified',
-    period: 'July — Aug 2026',
+    issuer: 'Mindrisers Institute of Technology · Kathmandu · ID: MR-83003-DS',
+    badge: '3 Months · Certified',
+    period: 'Issued 31 July 2026',
     title: 'Data Science Certification',
     details:
-      'Completed certification and practical assessments covering end-to-end data analysis, supervised and unsupervised machine learning, and neural network fundamentals.',
+      'Completed the 3-month Data Science Training program and practical assessments; course curriculum covered Data Science, Machine Learning, Artificial Intelligence, and Deep Learning.',
     topics: ['Data Science', 'Machine Learning', 'Artificial Intelligence', 'Deep Learning'],
     icon: Award,
   },
