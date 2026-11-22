@@ -1,135 +1,16 @@
 export const projectsData = [
   {
-<<<<<<< HEAD
-    "id": "portfolio",
-    "name": "Portfolio",
-    "category": "JavaScript",
-    "shortDesc": "\ufeff# RAJESH.DEV \u2014 Developer Portfolio A monochrome, production-grade developer portfolio built with React, Vite, and Tailwind CSS v4, featuring automated GitHub README analysis and an interactive AI assistant.",
-    "fullDesc": "\ufeff# RAJESH.DEV \u2014 Developer Portfolio A monochrome, production-grade developer portfolio built with React, Vite, and Tailwind CSS v4, featuring automated GitHub README analysis and an interactive AI assistant.",
-    "tags": [
-      "JavaScript"
-    ],
-    "github": "https://github.com/rajeshchauhdary/Portfolio",
-    "demo": "https://portfolio-dusky-nine-55.vercel.app",
-    "highlights": [
-      "Developed primarily in JavaScript",
-      "Documented with project README and source repository",
-      "Automatically synchronized from GitHub"
-    ]
-  },
-  {
-    "id": "edusity",
-    "name": "Edusity",
-    "category": "Software",
-    "shortDesc": "Edusity",
-    "fullDesc": "Edusity",
-    "tags": [
-      "Python",
-      "React"
-    ],
-    "github": "https://github.com/rajeshchauhdary/Edusity",
-    "demo": "#",
-    "highlights": [
-      "Developed primarily in Software",
-      "Documented with project README and source repository",
-      "Automatically synchronized from GitHub"
-    ]
-  },
-  {
-    "id": "smart-anonymizer-studio",
-    "name": "Smart-Anonymizer-Studio",
-    "category": "Python",
-    "shortDesc": "A Streamlit app that takes a CSV containing sensitive data, automatically detects which columns are PII (names, emails, SSNs, etc.), and generates a privacy-safe synthetic version of the dataset \u2014 one that preserves the",
-    "fullDesc": "A Streamlit app that takes a CSV containing sensitive data, automatically detects which columns are PII (names, emails, SSNs, etc.), and generates a privacy-safe synthetic version of the dataset \u2014 one that preserves the",
-    "tags": [
-      "Python"
-    ],
-    "github": "https://github.com/rajeshchauhdary/Smart-Anonymizer-Studio",
-    "demo": "#",
-    "highlights": [
-      "Developed primarily in Python",
-      "Documented with project README and source repository",
-      "Automatically synchronized from GitHub"
-    ]
-  },
-  {
-    "id": "ml-observability-stack",
-    "name": "ml-observability-stack",
-    "category": "Python",
-    "shortDesc": "A production-shaped observability platform for ML models: a FastAPI model server that exposes Prometheus metrics, drift scores, and structured logs; Prometheus + Alertmanager for metrics and alerting; Loki + Promtail for",
-    "fullDesc": "A production-shaped observability platform for ML models: a FastAPI model server that exposes Prometheus metrics, drift scores, and structured logs; Prometheus + Alertmanager for metrics and alerting; Loki + Promtail for",
-    "tags": [
-      "Python"
-    ],
-    "github": "https://github.com/rajeshchauhdary/ml-observability-stack",
-    "demo": "#",
-    "highlights": [
-      "Developed primarily in Python",
-      "Documented with project README and source repository",
-      "Automatically synchronized from GitHub"
-    ]
-  },
-  {
-    "id": "feature_engineering",
-    "name": "Feature_Engineering",
-    "category": "Python",
-    "shortDesc": "A Streamlit app that ingests a raw tabular dataset and a target column, automatically generates hundreds of candidate features, validates each one through 5-fold cross-validation, evolves the best feature combinations...",
-    "fullDesc": "A Streamlit app that ingests a raw tabular dataset and a target column, automatically generates hundreds of candidate features, validates each one through 5-fold cross-validation, evolves the best feature combinations...",
-    "tags": [
-      "Python"
-    ],
-    "github": "https://github.com/rajeshchauhdary/Feature_Engineering",
-    "demo": "#",
-    "highlights": [
-      "Developed primarily in Python",
-      "Documented with project README and source repository",
-      "Automatically synchronized from GitHub"
-    ]
-  },
-  {
-    "id": "ai_salary_prediction",
-    "name": "AI_Salary_Prediction",
-    "category": "Jupyter Notebook",
-    "shortDesc": "A complete, end-to-end data science project: predicting AI-era job compensation from 5,000 job postings (2010\u20132025) using supervised regression, deployed as an interactive Streamlit web app \u2014 complete with a live...",
-    "fullDesc": "A complete, end-to-end data science project: predicting AI-era job compensation from 5,000 job postings (2010\u20132025) using supervised regression, deployed as an interactive Streamlit web app \u2014 complete with a live...",
-    "tags": [
-      "Jupyter Notebook"
-    ],
-    "github": "https://github.com/rajeshchauhdary/AI_Salary_Prediction",
-    "demo": "#",
-    "highlights": [
-      "Developed primarily in Jupyter Notebook",
-      "Documented with project README and source repository",
-      "Automatically synchronized from GitHub"
-    ]
-  },
-  {
-=======
->>>>>>> c04deca (Auto-sync GitHub pinned repos live via Vercel function)
     "id": "ai-landscape-segmentation",
     "name": "AI-Landscape-Segmentation",
-    "category": "Jupyter Notebook",
-    "shortDesc": "A complete, end-to-end data science project: segmenting a catalog of 10,000 AI tools into market groups using unsupervised learning, deployed as an interactive Streamlit web app (with a live, rotatable 3D segment map)...",
-    "fullDesc": "A complete, end-to-end data science project: segmenting a catalog of 10,000 AI tools into market groups using unsupervised learning, deployed as an interactive Streamlit web app (with a live, rotatable 3D segment map)...",
+    "category": "AI Model",
+    "shortDesc": "End-to-end data science project for unsupervised AI tool segmentation using clustering.",
+    "fullDesc": "This project utilizes unsupervised learning to segment a catalog of 10,000 AI tools into market groups. The interactive Streamlit web app features a live, rotatable 3D segment map that classifies new tools into their most likely segment. The dataset is preprocessed and analyzed using various techniques, including EDA, feature engineering, and clustering.",
     "tags": [
       "Jupyter Notebook"
     ],
     "github": "https://github.com/rajeshchauhdary/AI-Landscape-Segmentation",
     "demo": "#",
     "highlights": [
-<<<<<<< HEAD
-      "Developed primarily in Jupyter Notebook",
-      "Documented with project README and source repository",
-      "Automatically synchronized from GitHub"
-    ]
-  },
-  {
-    "id": "oil-temperature-forecasting",
-    "name": "oil-temperature-forecasting",
-    "category": "Jupyter Notebook",
-    "shortDesc": "An end-to-end time series forecasting project: from raw sensor data to a deployed, interactive dashboard. Built as part of an internship task on developing and deploying a time series forecasting model.",
-    "fullDesc": "An end-to-end time series forecasting project: from raw sensor data to a deployed, interactive dashboard. Built as part of an internship task on developing and deploying a time series forecasting model.",
-=======
       "Interactive 3D segment map for visualizing cluster assignments",
       "Live updates for new tool classifications",
       "Preprocessing and feature engineering for clustering",
@@ -143,61 +24,30 @@ export const projectsData = [
     "category": "Data Science Project",
     "shortDesc": "An end-to-end data science project predicting AI-era job compensation using supervised regression.",
     "fullDesc": "This project uses supervised regression to predict AI-era job compensation from 5,000 job postings (2010–2025). The model is deployed as an interactive Streamlit web app, which includes a live prediction form, a 19-model comparison lab, and a deep-learning benchmark.",
->>>>>>> c04deca (Auto-sync GitHub pinned repos live via Vercel function)
     "tags": [
       "Jupyter Notebook"
     ],
     "github": "https://github.com/rajeshchauhdary/AI_Salary_Prediction",
     "demo": "#",
     "highlights": [
-<<<<<<< HEAD
-      "Developed primarily in Jupyter Notebook",
-      "Documented with project README and source repository",
-      "Automatically synchronized from GitHub"
-    ]
-  },
-  {
-    "id": "model_performance_autopsy",
-    "name": "Model_Performance_Autopsy",
-    "category": "Python",
-    "shortDesc": "A Streamlit app that ingests a trained classification model (or trains one on the fly), a validation dataset, and generates a full Failure Autopsy Report \u2014 dissecting exactly where, why, and on whom the model fails, then",
-    "fullDesc": "A Streamlit app that ingests a trained classification model (or trains one on the fly), a validation dataset, and generates a full Failure Autopsy Report \u2014 dissecting exactly where, why, and on whom the model fails, then",
-    "tags": [
-      "Python"
-    ],
-    "github": "https://github.com/rajeshchauhdary/Model_Performance_Autopsy",
-    "demo": "#",
-    "highlights": [
-      "Developed primarily in Python",
-      "Documented with project README and source repository",
-      "Automatically synchronized from GitHub"
-    ]
-=======
       "5,000 job postings · 19 columns · 16 algorithms + tuning + deep learning · time-series forecasting to 2028 · country-level outlook to 2030 · 7-tab Streamlit app · Dockerized.",
       "Interactive 3D prediction surface for visualizing the relationship between AI intensity, automation risk, and salary.",
       "Leaderboard across all 19 model candidates, both interactive and live in the app."
     ],
     "pinned": true
->>>>>>> c04deca (Auto-sync GitHub pinned repos live via Vercel function)
   },
   {
     "id": "eda-studio",
     "name": "EDA-Studio",
-    "category": "Python",
-    "shortDesc": "A production-grade, single-page Streamlit application that ingests CSV files and produces a comprehensive, interactive Exploratory Data Analysis (EDA) report \u2014 complete with automated insights, dataset comparison (drift...",
-    "fullDesc": "A production-grade, single-page Streamlit application that ingests CSV files and produces a comprehensive, interactive Exploratory Data Analysis (EDA) report \u2014 complete with automated insights, dataset comparison (drift...",
+    "category": "Data Analysis Tool",
+    "shortDesc": "A production-grade Streamlit application for exploring and analyzing CSV files.",
+    "fullDesc": "This tool provides a comprehensive interactive Exploratory Data Analysis (EDA) report with automated insights, dataset comparison, memory-aware profiling, and one-click HTML/CSV export. It handles messy encodings, oversized files, and malformed dates gracefully and can detect data drift between two dataset versions.",
     "tags": [
       "Python"
     ],
     "github": "https://github.com/rajeshchauhdary/EDA-Studio",
     "demo": "#",
     "highlights": [
-<<<<<<< HEAD
-      "Developed primarily in Python",
-      "Documented with project README and source repository",
-      "Automatically synchronized from GitHub"
-    ]
-=======
       "Automated insights and dataset comparison",
       "Memory-aware profiling and one-click export",
       "Handles messy encodings and oversized files",
@@ -332,26 +182,19 @@ export const projectsData = [
       "Remediation Recommendation Engine with prioritized, specific fixes for every issue found"
     ],
     "pinned": false
->>>>>>> c04deca (Auto-sync GitHub pinned repos live via Vercel function)
   },
   {
     "id": "ds_6_syndicatefrauddetector_byte",
     "name": "DS_6_SyndicateFraudDetector_byte",
-    "category": "Jupyter Notebook",
-    "shortDesc": "\ufeff# The Syndicate \u2014 Real-Time Credit Card Fraud Detector A fraud detection pipeline for highly imbalanced credit card transaction data: preprocessing, class balancing with SMOTE, a Random Forest classifier producing...",
-    "fullDesc": "\ufeff# The Syndicate \u2014 Real-Time Credit Card Fraud Detector A fraud detection pipeline for highly imbalanced credit card transaction data: preprocessing, class balancing with SMOTE, a Random Forest classifier producing...",
+    "category": "Machine Learning",
+    "shortDesc": "A real-time credit card fraud detector using Jupyter Notebook.",
+    "fullDesc": "This repository provides a real-time credit card fraud detection pipeline that uses a Random Forest classifier and SMOTE for class balancing. The dataset is highly imbalanced, with only 492 fraudulent transactions out of 284,807 total transactions. The pipeline is designed to produce fraud probability scores and raise alerts whenever a transaction's fraud probability exceeds 95%.",
     "tags": [
       "Jupyter Notebook"
     ],
     "github": "https://github.com/rajeshchauhdary/DS_6_SyndicateFraudDetector_byte",
     "demo": "#",
     "highlights": [
-<<<<<<< HEAD
-      "Developed primarily in Jupyter Notebook",
-      "Documented with project README and source repository",
-      "Automatically synchronized from GitHub"
-    ]
-=======
       "- Credit card fraud detection",
       "- Real-time inference simulation",
       "- SMOTE for class balancing",
@@ -359,26 +202,19 @@ export const projectsData = [
       "- High accuracy on the fraud class"
     ],
     "pinned": false
->>>>>>> c04deca (Auto-sync GitHub pinned repos live via Vercel function)
   },
   {
     "id": "ds_7_recommendationengine_byte",
     "name": "DS_7_RecommendationEngine_byte",
-    "category": "Python",
-    "shortDesc": "An end-to-end, production-grade Collaborative Filtering Recommendation Engine built from scratch using regularized Singular Value Decomposition (SVD) matrix factorization on the MovieLens 100k dataset. Includes...",
-    "fullDesc": "An end-to-end, production-grade Collaborative Filtering Recommendation Engine built from scratch using regularized Singular Value Decomposition (SVD) matrix factorization on the MovieLens 100k dataset. Includes...",
+    "category": "Recommendation Engine",
+    "shortDesc": "Production-grade Collaborative Filtering Recommendation Engine built using regularized SVD matrix factorization",
+    "fullDesc": "The repository implements an end-to-end, production-grade Collaborative Filtering Recommendation Engine for the MovieLens 100k dataset, featuring automated data ingestion, extensive baseline benchmarking, and comprehensive unit tests.",
     "tags": [
       "Python"
     ],
     "github": "https://github.com/rajeshchauhdary/DS_7_RecommendationEngine_byte",
     "demo": "#",
     "highlights": [
-<<<<<<< HEAD
-      "Developed primarily in Python",
-      "Documented with project README and source repository",
-      "Automatically synchronized from GitHub"
-    ]
-=======
       "Automated data ingestion",
       "Extensive baseline benchmarking",
       "3-fold cross-validation grid search",
@@ -388,81 +224,59 @@ export const projectsData = [
       "Comprehensive unit tests"
     ],
     "pinned": false
->>>>>>> c04deca (Auto-sync GitHub pinned repos live via Vercel function)
   },
   {
     "id": "ds_4_decisiontreeclassifier_byte",
     "name": "DS_4_DecisionTreeClassifier_byte",
-    "category": "Python",
-    "shortDesc": "Decision Tree Classifier for bank marketing subscription prediction featuring Explainable AI (TreeSHAP) rationale generation, built for the B.Y.T.E Arithmatrix Virtual Internship Program (AVIP 2026).",
-    "fullDesc": "Decision Tree Classifier for bank marketing subscription prediction featuring Explainable AI (TreeSHAP) rationale generation, built for the B.Y.T.E Arithmatrix Virtual Internship Program (AVIP 2026).",
+    "category": "Machine Learning",
+    "shortDesc": "Decision Tree Classifier for bank marketing subscription prediction with Explainable AI (TreeSHAP) rationale generation.",
+    "fullDesc": "This repository implements a decision tree classifier with local interpretability to produce explicit diagnostic rationale sentences for individual client decisions. The classifier is trained on the UCI Machine Learning Repository's Bank Marketing dataset and achieves an accuracy of 84.55%. The model is also evaluated using precision, recall, and F1-score, which are 41.52%, 91.06%, and 57.04%, respectively.",
     "tags": [
       "Python"
     ],
     "github": "https://github.com/rajeshchauhdary/DS_4_DecisionTreeClassifier_byte",
     "demo": "#",
     "highlights": [
-<<<<<<< HEAD
-      "Developed primarily in Python",
-      "Documented with project README and source repository",
-      "Automatically synchronized from GitHub"
-    ]
-=======
       "Features a decision tree classifier with TreeSHAP explainability for interpretable results",
       "Trained on the UCI Machine Learning Repository's Bank Marketing dataset",
       "Achieves high accuracy and evaluation metrics"
     ],
     "pinned": false
->>>>>>> c04deca (Auto-sync GitHub pinned repos live via Vercel function)
   },
   {
     "id": "retail",
     "name": "retail",
-    "category": "Jupyter Notebook",
-    "shortDesc": "Software engineering repository.",
-    "fullDesc": "Software engineering repository.",
+    "category": "Data Science",
+    "shortDesc": "Retail dataset analysis in Jupyter Notebook",
+    "fullDesc": "This repository provides a Jupyter Notebook for analyzing retail data, including insights into customer behavior and sales trends. The notebook is designed to be easily reproducible and shareable.",
     "tags": [
       "Jupyter Notebook"
     ],
     "github": "https://github.com/rajeshchauhdary/retail",
     "demo": "#",
     "highlights": [
-<<<<<<< HEAD
-      "Developed primarily in Jupyter Notebook",
-      "Documented with project README and source repository",
-      "Automatically synchronized from GitHub"
-    ]
-=======
       "Analyze customer purchasing habits",
       "Identify top-selling products",
       "Visualize sales trends over time"
     ],
     "pinned": false
->>>>>>> c04deca (Auto-sync GitHub pinned repos live via Vercel function)
   },
   {
     "id": "amazon",
     "name": "Amazon",
-    "category": "CSS",
-    "shortDesc": "Clone of Amazon",
-    "fullDesc": "Clone of Amazon",
+    "category": "E-commerce",
+    "shortDesc": "A clone of the popular Amazon website, built using CSS.",
+    "fullDesc": "This repository contains a simple clone of the Amazon website, built using CSS for styling and layout. It features a basic shopping cart and product display. The goal is to create a minimalistic and user-friendly version of the Amazon website.",
     "tags": [
       "CSS"
     ],
     "github": "https://github.com/rajeshchauhdary/Amazon",
     "demo": "#",
     "highlights": [
-<<<<<<< HEAD
-      "Developed primarily in CSS",
-      "Documented with project README and source repository",
-      "Automatically synchronized from GitHub"
-    ]
-=======
       "Responsive design",
       "Basic shopping cart functionality",
       "Simple product display"
     ],
     "pinned": false
->>>>>>> c04deca (Auto-sync GitHub pinned repos live via Vercel function)
   }
 ];
