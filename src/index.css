@@ -20,3 +20,8 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #404040;
 }
+
+html {
+  scroll-snap-type: y proximity;
+  scroll-behavior: smooth;
+}
