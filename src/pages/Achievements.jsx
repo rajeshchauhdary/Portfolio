@@ -1,48 +1,116 @@
-﻿import React from 'react';
-import { Award, Trophy } from 'lucide-react';
+import React from 'react';
+import { GraduationCap, Award, ShieldCheck } from 'lucide-react';
 
-export default function Achievements() {
-  const achievements = [
-    {
-      title: 'MBMC IdeaX 2026 Innovation Event',
-      role: 'Team Runtime Terror Member',
-      description: 'Participated in the innovation competition organized by Madan Bhandari Memorial College, building intelligent prototype solutions.'
-    },
-    {
-      title: 'Arithmatrix Virtual Internship Program (AVIP 2026)',
-      role: 'Data Science Intern',
-      description: 'Completed specialized applied data science and predictive modeling assignments.'
-    },
-    {
-      title: 'Open Source & AI R&D',
-      role: 'Creator & Maintainer',
-      description: 'Engineered specialized tools like Articula AI, Aapdalens, and JalDrishti for automated geospatial and medical domain research.'
-    }
-  ];
+const certifications = [
+  {
+    issuer: 'AWS Training & Certification · Credly Badge',
+    period: 'Sept 2026',
+    title: 'AWS Academy Cloud Foundations',
+    details:
+      'Completed coursework, assessments, and hands-on labs covering IAM, VPC networking, EC2, S3, EBS, RDS, DynamoDB, Auto Scaling, and Elastic Load Balancing.',
+    icon: ShieldCheck,
+  },
+  {
+    issuer: 'Mindrisers Consortium Pvt. Ltd.',
+    period: 'July — Aug 2026',
+    title: 'Data Science Certification',
+    details:
+      'Completed certification and practical tasks; course curriculum covered Data Science, Machine Learning, Artificial Intelligence, and Deep Learning.',
+    icon: Award,
+  },
+  {
+    issuer: 'AWS Skill Builder',
+    period: 'Sept 2026',
+    title: 'Foundations of Prompt Engineering',
+    details:
+      'Studied structured prompt anatomy, XML delimiters, and output constraints for reliable LLM responses.',
+    icon: Award,
+  },
+  {
+    issuer: 'Kathmandu Metropolitan City',
+    period: '2026',
+    title: '3-Month Technical Training',
+    details:
+      'Completed a 3-month technical training course.',
+    icon: Award,
+  },
+];
 
+export function Achievements() {
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
-      <div className="space-y-4 border-b border-neutral-800 pb-8">
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white font-mono">
-          // ACHIEVEMENTS
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-8 pb-16 space-y-10">
+      <div className="space-y-3 border-b border-white/10 pb-8">
+        <span className="inline-block text-xs font-mono text-[#FACC15] uppercase tracking-[0.22em]">
+          CREDENTIALS
+        </span>
+        <h1 className="text-3xl sm:text-5xl font-serif tracking-tight text-[#F8F7F2]">
+          Education &amp; certifications.
         </h1>
-        <p className="text-neutral-400 text-lg">
-          Competitions, hackathons, and key milestones.
+        <p className="text-neutral-400 text-base sm:text-lg max-w-2xl leading-relaxed">
+          Academic degree program and completed cloud, data, and technical training credentials.
         </p>
       </div>
 
-      <div className="space-y-6">
-        {achievements.map((item, idx) => (
-          <div key={idx} className="border border-neutral-800 bg-neutral-900/40 p-6 space-y-3 hover:border-neutral-700 transition-colors">
-            <div className="flex items-center space-x-2 text-neutral-400 font-mono text-xs">
-              <Trophy className="w-4 h-4 text-white" />
-              <span>{item.role}</span>
+      <section className="space-y-4">
+        <span className="block text-xs font-mono text-[#FACC15] uppercase tracking-[0.22em]">
+          EDUCATION
+        </span>
+
+        <div className="rounded-2xl border border-white/10 bg-[#0C0C0A] p-6 sm:p-8 space-y-3 hover:border-[#FACC15]/40 transition-colors">
+          <div className="flex items-center justify-between gap-3">
+            <span className="inline-block rounded-full border border-[#FACC15]/30 bg-[#FACC15]/10 px-3 py-0.5 text-xs font-mono text-[#FACC15]">
+              Running Final Year · Lalitpur, Nepal
+            </span>
+            <div className="rounded-xl border border-white/10 bg-[#080807] p-2 text-[#FACC15]">
+              <GraduationCap className="w-4 h-4" />
             </div>
-            <h2 className="text-xl font-bold text-white font-mono">{item.title}</h2>
-            <p className="text-neutral-300 text-sm font-light leading-relaxed">{item.description}</p>
           </div>
-        ))}
-      </div>
+
+          <h2 className="text-xl sm:text-2xl font-serif text-[#F8F7F2]">
+            Bachelor of Science in Computer Science and Information Technology (BSc CSIT)
+          </h2>
+
+          <p className="text-sm sm:text-base text-neutral-400 leading-relaxed max-w-3xl">
+            Studying core computer science fundamentals, algorithms, database systems, and software engineering while building practical data science and AI systems.
+          </p>
+        </div>
+      </section>
+
+      <section className="space-y-4">
+        <span className="block text-xs font-mono text-[#FACC15] uppercase tracking-[0.22em]">
+          CERTIFICATIONS &amp; TRAINING ({certifications.length})
+        </span>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch">
+          {certifications.map((cert) => {
+            const Icon = cert.icon;
+            return (
+              <article
+                key={cert.title}
+                className="h-full flex flex-col rounded-2xl border border-white/10 bg-[#0C0C0A] p-6 space-y-3 hover:border-[#FACC15]/40 transition-colors"
+              >
+                <div className="flex items-center justify-between gap-3 text-xs font-mono">
+                  <span className="text-[#FACC15]">{cert.issuer}</span>
+                  <span className="text-neutral-400 shrink-0">{cert.period}</span>
+                </div>
+
+                <div className="flex items-start justify-between gap-3 pt-1">
+                  <h2 className="text-lg sm:text-xl font-serif text-[#F8F7F2]">
+                    {cert.title}
+                  </h2>
+                  <Icon className="w-4 h-4 text-[#FACC15] shrink-0 mt-1" />
+                </div>
+
+                <p className="text-sm text-neutral-400 leading-relaxed flex-1">
+                  {cert.details}
+                </p>
+              </article>
+            );
+          })}
+        </div>
+      </section>
     </div>
   );
 }
+
+export default Achievements;
