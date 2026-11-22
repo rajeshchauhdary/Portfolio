@@ -65,8 +65,8 @@ export default function Home() {
   }));
 
   return (
-    <div className="snap-y snap-mandatory">
-      <section className="relative min-h-[calc(100vh-5.5rem)] scroll-mt-24 flex items-center overflow-hidden">
+    <div className="">
+      <section className="snap-start relative min-h-[calc(100vh-5.5rem)] scroll-mt-24 flex items-center overflow-hidden">
         {portraitImg && (
           <div
             aria-hidden="true"
@@ -203,6 +203,7 @@ export default function Home() {
     </div>
   );
 }
+
 
 
 
