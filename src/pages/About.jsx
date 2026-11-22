@@ -5,7 +5,7 @@ import {
   Cpu,
   ArrowUpRight,
   Trophy,
-  Sparkles,
+  ShieldCheck,
 } from 'lucide-react';
 
 function GitHubIcon({ className }) {
@@ -76,102 +76,58 @@ const quickFacts = [
     icon: Cpu,
   },
   {
-    label: 'Approach',
-    value: 'Systems over hype, tested in practice',
-    icon: Sparkles,
+    label: 'How I Build',
+    value: 'Vibe coding speed + strict security & tests',
+    icon: ShieldCheck,
   },
 ];
 
 export default function About() {
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-8 pb-16 space-y-10">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-8 pb-16 space-y-8">
       <div className="space-y-3 border-b border-white/10 pb-8">
         <span className="inline-block text-xs font-mono text-[#FACC15] uppercase tracking-[0.22em]">
           ABOUT
         </span>
         <h1 className="text-3xl sm:text-5xl font-serif tracking-tight text-[#F8F7F2]">
-          Background &amp; engineering philosophy.
+          Builder at heart. Practical by habit.
         </h1>
         <p className="text-neutral-400 text-base sm:text-lg max-w-2xl leading-relaxed">
-          Building practical machine learning pipelines, retrieval systems, and reliable full-stack applications.
+          Turning raw data and AI ideas into fast, secure, and usable software.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        <div className="lg:col-span-7 space-y-6">
-          <div className="rounded-2xl border border-white/10 bg-[#0C0C0A] p-6 sm:p-8 space-y-5 text-neutral-300 text-base leading-relaxed">
-            <p>
-              I am <span className="text-[#F8F7F2] font-medium">Rajesh Chaudhary</span>, a final-year{' '}
-              <span className="text-[#F8F7F2] font-medium">
-                Bachelor of Science in Computer Science and Information Technology (BSc CSIT)
-              </span>{' '}
-              student based in Lalitpur, Nepal.
-            </p>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        <div className="lg:col-span-7 rounded-2xl border border-white/10 bg-[#0C0C0A] p-6 sm:p-8 flex flex-col justify-between space-y-5 text-neutral-300 text-base leading-relaxed">
+          <p>
+            Hi, I&apos;m <span className="text-[#F8F7F2] font-medium">Rajesh Chaudhary</span>—a final-year{' '}
+            <span className="text-[#F8F7F2] font-medium">BSc CSIT</span> student in Lalitpur, Nepal. I enjoy taking a messy real-world problem, exploring the data, and shipping a clean product people can actually use.
+          </p>
 
-            <p>
-              My work centers on{' '}
-              <span className="text-[#F8F7F2] font-medium">
-                Data Science, Machine Learning, Natural Language Processing, and Retrieval-Augmented Generation (RAG)
-              </span>
-              . Rather than treating models as isolated notebooks, I focus on turning raw data into end-to-end systems—combining feature engineering, evaluation pipelines, and clean web interfaces.
-            </p>
+          <p>
+            My main focus is <span className="text-[#F8F7F2] font-medium">Data Science, Machine Learning, and AI apps</span> (including RAG search and smart agents). Instead of leaving models stuck inside notebooks, I wrap them into full web apps with Python, TypeScript, React, and FastAPI.
+          </p>
 
-            <p>
-              Across Python, TypeScript, React, FastAPI, and Docker, I prioritize reproducible workflows, automated testing, and measurable performance over unnecessary complexity.
-            </p>
-          </div>
-
-          <div className="space-y-3.5">
-            <span className="block text-xs font-mono text-[#FACC15] uppercase tracking-[0.22em]">
-              PROFILES &amp; LINKS
-            </span>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-              {profiles.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center justify-between rounded-2xl border border-white/10 bg-[#0C0C0A] p-4 hover:border-[#FACC15]/50 transition-colors"
-                  >
-                    <div className="flex items-center gap-3.5 min-w-0">
-                      <div className="rounded-xl border border-white/10 bg-[#080807] p-2.5 text-[#FACC15] shrink-0">
-                        <Icon className="w-4 h-4" />
-                      </div>
-                      <div className="min-w-0">
-                        <div className="text-sm font-medium text-[#F8F7F2] group-hover:text-[#FACC15] transition-colors">
-                          {item.name}
-                        </div>
-                        <div className="text-xs font-mono text-neutral-400 truncate">
-                          {item.handle}
-                        </div>
-                      </div>
-                    </div>
-                    <ArrowUpRight className="w-4 h-4 text-neutral-500 group-hover:text-[#FACC15] shrink-0 transition-colors" />
-                  </a>
-                );
-              })}
-            </div>
-          </div>
+          <p>
+            I love modern <span className="text-[#F8F7F2] font-medium">vibe coding</span> with AI tools to move fast and test ideas quickly—while keeping a sharp eye on <span className="text-[#F8F7F2] font-medium">security, input validation, and automated tests</span> so every build stays safe, clean, and reliable in production.
+          </p>
         </div>
 
-        <aside className="lg:col-span-5 rounded-2xl border border-white/10 bg-[#0C0C0A] p-6 sm:p-7 space-y-5">
+        <aside className="lg:col-span-5 rounded-2xl border border-white/10 bg-[#0C0C0A] p-6 sm:p-8 flex flex-col justify-between space-y-5">
           <span className="block text-xs font-mono text-[#FACC15] uppercase tracking-[0.22em]">
-            QUICK FACTS
+            AT A GLANCE
           </span>
 
-          <div className="space-y-4">
+          <div className="space-y-3.5">
             {quickFacts.map((fact) => {
               const Icon = fact.icon;
               return (
                 <div
                   key={fact.label}
-                  className="flex items-start gap-3.5 rounded-xl border border-white/10 bg-[#080807] p-4"
+                  className="flex items-start gap-3.5 rounded-xl border border-white/10 bg-[#080807] p-3.5"
                 >
                   <Icon className="w-4 h-4 text-[#FACC15] shrink-0 mt-0.5" />
-                  <div className="space-y-1">
+                  <div className="space-y-0.5">
                     <div className="text-[11px] font-mono uppercase tracking-[0.16em] text-neutral-400">
                       {fact.label}
                     </div>
@@ -185,6 +141,41 @@ export default function About() {
           </div>
         </aside>
       </div>
+
+      <section className="space-y-3.5 pt-2">
+        <span className="block text-xs font-mono text-[#FACC15] uppercase tracking-[0.22em]">
+          FIND ME ONLINE
+        </span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {profiles.map((item) => {
+            const Icon = item.icon;
+            return (
+              <a
+                key={item.name}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between rounded-2xl border border-white/10 bg-[#0C0C0A] p-4 hover:border-[#FACC15]/50 transition-colors"
+              >
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="rounded-xl border border-white/10 bg-[#080807] p-2.5 text-[#FACC15] shrink-0">
+                    <Icon className="w-4 h-4" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-sm font-medium text-[#F8F7F2] group-hover:text-[#FACC15] transition-colors">
+                      {item.name}
+                    </div>
+                    <div className="text-xs font-mono text-neutral-400 truncate">
+                      {item.handle}
+                    </div>
+                  </div>
+                </div>
+                <ArrowUpRight className="w-4 h-4 text-neutral-500 group-hover:text-[#FACC15] shrink-0 transition-colors" />
+              </a>
+            );
+          })}
+        </div>
+      </section>
     </div>
   );
 }
