@@ -44,11 +44,11 @@ export default function ProjectDetail() {
       <div>
               <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
         <Link
-          to="/#projects"
+          to="/#projects-section"
           className="inline-flex items-center gap-2 text-neutral-400 hover:text-[#FACC15] font-mono text-xs uppercase tracking-[0.18em] transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>Back to Work</span>
+          <span>Back</span>
         </Link>
 
         <Link

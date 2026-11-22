@@ -19,29 +19,30 @@ function ScrollToTop() {
   useEffect(() => {
     const html = document.documentElement;
     const prevBehavior = html.style.scrollBehavior;
+    html.style.scrollBehavior = 'auto';
 
     if (hash) {
-      let attempts = 0;
-      const scrollToTarget = () => {
-        const target = document.querySelector(hash);
-        if (target) {
-          html.style.scrollBehavior = 'smooth';
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          setTimeout(() => {
-            html.style.scrollBehavior = prevBehavior || '';
-          }, 500);
+      const id = hash.replace(/^#/, '');
+      let tries = 0;
+      const jump = () => {
+        const el = document.getElementById(id) || document.querySelector(hash);
+        if (el) {
+          el.scrollIntoView({ behavior: 'instant', block: 'start' });
+          window.scrollBy(0, -88);
+          html.style.scrollBehavior = prevBehavior || '';
           return;
         }
-        attempts += 1;
-        if (attempts < 25) {
-          requestAnimationFrame(scrollToTarget);
+        tries += 1;
+        if (tries < 40) {
+          setTimeout(jump, 25);
+        } else {
+          html.style.scrollBehavior = prevBehavior || '';
         }
       };
-      requestAnimationFrame(scrollToTarget);
+      setTimeout(jump, 0);
       return;
     }
 
-    html.style.scrollBehavior = 'auto';
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     html.style.scrollBehavior = prevBehavior || '';
   }, [pathname, hash]);

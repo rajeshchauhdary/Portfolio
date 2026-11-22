@@ -208,7 +208,7 @@ export default function Home() {
                 FEATURED WORK
               </p>
               <h2 className="text-4xl sm:text-5xl text-[#F8F7F2] tracking-tight">
-                Projects &amp; systems.
+                <span id="projects-section" class="block scroll-mt-24"></span>Projects &amp; systems.
               </h2>
             </div>
 
