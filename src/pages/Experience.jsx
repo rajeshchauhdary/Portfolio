@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import { Link } from 'react-router-dom';
-import { Trophy, Wrench, Users, ArrowUpRight } from 'lucide-react';
+import { Trophy, ArrowUpRight } from 'lucide-react';
 
 const kaggleCompetitions = [
   {
@@ -26,23 +26,6 @@ const kaggleCompetitions = [
     track: 'Research · Medical Imaging',
     status: 'Rank 5,236 / 6,299',
     summary: 'Detecting knee abnormalities from multimodal clinical imaging data.',
-  },
-];
-
-const practicalWork = [
-  {
-    label: 'Hackathon · 2026',
-    title: 'MBMC IdeaX 2026 — Team Runtime Terror',
-    description:
-      'Collaborated in a team innovation challenge, pitching practical software solutions for local civic problems.',
-    icon: Users,
-  },
-  {
-    label: 'Self-Driven Projects · Ongoing',
-    title: 'Building Tools for Real Everyday Problems',
-    description:
-      'Instead of waiting for a job title, I build end-to-end apps, RAG pipelines, and data tools with clean code, tests, and validation.',
-    icon: Wrench,
   },
 ];
 
@@ -113,37 +96,6 @@ export function Experience() {
               </div>
             </div>
           ))}
-        </div>
-      </section>
-
-      <section className="space-y-4">
-        <span className="block text-xs font-mono text-[#FACC15] uppercase tracking-[0.22em]">
-          EVENTS &amp; PRACTICE
-        </span>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch">
-          {practicalWork.map((item) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={item.title}
-                className="h-full rounded-2xl border border-white/10 bg-[#0C0C0A] p-6 space-y-3 hover:border-[#FACC15]/40 transition-colors"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono text-[#FACC15]">
-                    {item.label}
-                  </span>
-                  <Icon className="w-4 h-4 text-[#FACC15]" />
-                </div>
-                <h3 className="text-lg sm:text-xl font-serif text-[#F8F7F2]">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-neutral-400 leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            );
-          })}
         </div>
       </section>
     </div>
