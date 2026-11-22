@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { ArrowDown, ArrowUpRight, Menu, X } from 'lucide-react';
 
@@ -40,7 +40,7 @@ export default function Navbar() {
           ))}
 
           <a
-            href="/resume.pdf"
+            href="/cv.pdf" download="Rajesh_Chaudhary_CV.pdf"
             download
             className="inline-flex items-center gap-1 font-medium text-[#FACC15] hover:text-[#FDE047] transition-colors"
           >
@@ -87,7 +87,7 @@ export default function Navbar() {
           </div>
           <div className="pt-2 border-t border-white/10 flex items-center justify-between gap-3">
             <a
-              href="/resume.pdf"
+              href="/cv.pdf" download="Rajesh_Chaudhary_CV.pdf"
               download
               onClick={() => setOpen(false)}
               className="inline-flex items-center gap-1 text-sm font-medium text-[#FACC15] hover:text-[#FDE047]"
