@@ -66,7 +66,7 @@ export default function Home() {
 
   return (
     <div className="">
-      <section className="snap-start relative min-h-[calc(100vh-5.5rem)] scroll-mt-24 flex items-center overflow-hidden">
+      <section className="snap-start relative min-h-[calc(100vh-5.5rem)] scroll-mt-24 flex items-center overflow-hidden" id="projects">
         {portraitImg && (
           <div
             aria-hidden="true"

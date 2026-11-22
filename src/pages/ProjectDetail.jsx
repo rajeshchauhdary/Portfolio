@@ -42,13 +42,23 @@ export default function ProjectDetail() {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-8 pb-16 space-y-8">
       <div>
+              <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
         <Link
-          to="/projects"
-          className="inline-flex items-center gap-2 text-neutral-400 hover:text-[#FACC15] font-mono text-xs uppercase tracking-[0.18em] mb-6 transition-colors"
+          to="/#projects"
+          className="inline-flex items-center gap-2 text-neutral-400 hover:text-[#FACC15] font-mono text-xs uppercase tracking-[0.18em] transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Work</span>
         </Link>
+
+        <Link
+          to="/projects"
+          className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-[#0C0C0A] hover:border-[#FACC15]/50 text-neutral-300 hover:text-[#FACC15] px-4 py-2 font-mono text-xs uppercase tracking-[0.16em] transition-colors"
+        >
+          <span>See all projects</span>
+          <ArrowUpRight className="w-3.5 h-3.5" />
+        </Link>
+      </div>
 
         <div className="rounded-2xl border border-white/10 bg-[#0C0C0A] p-6 sm:p-8 space-y-6">
           <div className="space-y-3">
