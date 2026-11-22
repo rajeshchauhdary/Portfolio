@@ -24,7 +24,7 @@ export default function ProjectDetail() {
 
   if (!project) {
     return (
-      <div className="max-w-4xl mx-auto px-4 py-24 text-center space-y-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-24 text-center space-y-6">
         <h1 className="text-3xl font-serif text-[#F8F7F2]">Project Not Found</h1>
         <p className="text-neutral-400 text-sm">
           The requested repository does not exist in the portfolio index.
@@ -40,32 +40,32 @@ export default function ProjectDetail() {
   }
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-16 space-y-10">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-8 pb-16 space-y-8">
       <div>
         <Link
           to="/projects"
-          className="inline-flex items-center gap-2 text-neutral-400 hover:text-[#FACC15] font-mono text-xs uppercase tracking-[0.16em] mb-8 transition-colors"
+          className="inline-flex items-center gap-2 text-neutral-400 hover:text-[#FACC15] font-mono text-xs uppercase tracking-[0.18em] mb-6 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Work</span>
         </Link>
 
-        <div className="rounded-2xl border border-white/10 bg-[#0C0C0A] p-7 sm:p-9 space-y-5">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <span className="text-xs font-mono text-[#FACC15] uppercase tracking-[0.2em]">
+        <div className="rounded-2xl border border-white/10 bg-[#0C0C0A] p-6 sm:p-8 space-y-6">
+          <div className="space-y-3">
+            <span className="inline-block text-xs font-mono text-[#FACC15] uppercase tracking-[0.22em]">
               {cleanText(project.category)}
             </span>
+
+            <h1 className="text-3xl sm:text-5xl font-serif tracking-tight text-[#F8F7F2]">
+              {project.name}
+            </h1>
+
+            <p className="text-neutral-300 text-base sm:text-lg leading-relaxed max-w-3xl">
+              {cleanText(project.shortDesc)}
+            </p>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-serif tracking-tight text-[#F8F7F2]">
-            {project.name}
-          </h1>
-
-          <p className="text-neutral-300 text-base sm:text-lg leading-relaxed max-w-3xl">
-            {cleanText(project.shortDesc)}
-          </p>
-
-          <div className="pt-2 flex flex-wrap items-center justify-between gap-4 border-t border-white/10">
+          <div className="pt-5 border-t border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="flex flex-wrap gap-2">
               {project.tags.map((tag, idx) => (
                 <span
@@ -81,7 +81,7 @@ export default function ProjectDetail() {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl bg-[#FACC15] hover:bg-[#FDE047] text-[#080807] px-5 py-2.5 text-sm font-medium transition-colors"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#FACC15] hover:bg-[#FDE047] text-[#080807] px-5 py-2.5 text-sm font-medium transition-colors shrink-0"
             >
               <Code2 className="w-4 h-4" />
               <span>GitHub Repository</span>
@@ -91,19 +91,19 @@ export default function ProjectDetail() {
         </div>
       </div>
 
-      <section className="rounded-2xl border border-white/10 bg-[#0C0C0A] p-7 sm:p-8 space-y-4">
-        <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-[#FACC15]">
+      <section className="rounded-2xl border border-white/10 bg-[#0C0C0A] p-6 sm:p-8 space-y-3.5">
+        <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-[0.22em] text-[#FACC15]">
           <Layers className="w-4 h-4" />
           <span>PROJECT OVERVIEW</span>
         </div>
-        <p className="text-neutral-300 text-base leading-relaxed whitespace-pre-line">
+        <p className="text-neutral-300 text-sm sm:text-base leading-relaxed whitespace-pre-line max-w-4xl">
           {cleanText(project.fullDesc)}
         </p>
       </section>
 
       {project.highlights?.length > 0 && (
         <section className="space-y-4">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-[#FACC15]">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-[0.22em] text-[#FACC15]">
             <Cpu className="w-4 h-4" />
             <span>KEY ARCHITECTURE &amp; FEATURES</span>
           </div>
@@ -111,12 +111,15 @@ export default function ProjectDetail() {
             {project.highlights.map((item, idx) => (
               <div
                 key={idx}
-                className="flex items-start gap-3 rounded-2xl border border-white/10 bg-[#0C0C0A] p-5 hover:border-[#FACC15]/40 transition-colors"
+                className="rounded-2xl border border-white/10 bg-[#0C0C0A] p-5 hover:border-[#FACC15]/40 transition-colors space-y-2.5"
               >
-                <CheckCircle2 className="w-5 h-5 text-[#FACC15] shrink-0 mt-0.5" />
-                <span className="text-sm leading-relaxed text-neutral-300">
+                <div className="flex items-center justify-between text-xs font-mono text-[#FACC15]">
+                  <span>{String(idx + 1).padStart(2, '0')}</span>
+                  <CheckCircle2 className="w-4 h-4" />
+                </div>
+                <p className="text-sm leading-relaxed text-neutral-300">
                   {cleanText(item)}
-                </span>
+                </p>
               </div>
             ))}
           </div>
