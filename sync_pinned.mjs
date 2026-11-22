@@ -12,15 +12,23 @@ function slugify(name) {
     .replace(/^-+|-+$/g, '');
 }
 
+function humanizeName(name) {
+  return name.replace(/[-_]+/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
 async function getPinnedRepos(username) {
-  const res = await fetch('https://github.com/' + username, {
-    headers: { 'User-Agent': 'Mozilla/5.0' },
-  });
-  if (!res.ok) throw new Error(`GitHub returned ${res.status}`);
-  const html = await res.text();
-  const pinnedSection = html.split('js-pinned-items-reorder-container')[1] || html;
-  const matches = [...pinnedSection.matchAll(/<span class="repo"[^>]*>\s*([^<\s]+)\s*<\/span>/g)];
-  return [...new Set(matches.map((m) => m[1].trim()))];
+  try {
+    const res = await fetch('https://github.com/' + username, {
+      headers: { 'User-Agent': 'Mozilla/5.0' },
+    });
+    if (!res.ok) return [];
+    const html = await res.text();
+    const pinnedSection = html.split('js-pinned-items-reorder-container')[1] || html;
+    const matches = [...pinnedSection.matchAll(/<span class="repo"[^>]*>\s*([^<\s]+)\s*<\/span>/g)];
+    return [...new Set(matches.map((m) => m[1].trim()))];
+  } catch {
+    return [];
+  }
 }
 
 async function getAllPublicRepos(username) {
@@ -30,10 +38,17 @@ async function getAllPublicRepos(username) {
       Accept: 'application/vnd.github+json',
     },
   });
-  if (!res.ok) return [];
+  if (!res.ok) {
+    console.warn(`GitHub API returned ${res.status}`);
+    return [];
+  }
   const repos = await res.json();
   return Array.isArray(repos)
-    ? repos.filter((r) => !r.fork && r.name.toLowerCase() !== username.toLowerCase() && r.name.toLowerCase() !== 'portfolio')
+    ? repos.filter(
+        (r) =>
+          r.name.toLowerCase() !== username.toLowerCase() &&
+          r.name.toLowerCase() !== 'portfolio'
+      )
     : [];
 }
 
@@ -49,7 +64,7 @@ async function fetchReadme(repoFullName, defaultBranch = 'main') {
 }
 
 async function enrichWithOllama(project, readme) {
-  const sourceText = readme || project.shortDesc || project.name;
+  if (!readme) return project;
   const prompt = `Analyze this GitHub repository README and return ONLY valid JSON with keys:
 "category" (short 2-3 word domain label like "AI & ML", "RAG & Agents", "Data Science", "Computer Vision", or "Full-Stack Web"),
 "shortDesc" (1 crisp plain-English sentence, max 130 chars),
@@ -60,7 +75,7 @@ async function enrichWithOllama(project, readme) {
 Repo: ${project.name}
 GitHub Description: ${project.shortDesc || 'N/A'}
 README:
-${sourceText.slice(0, 4500)}`;
+${readme.slice(0, 4500)}`;
 
   try {
     const res = await fetch('http://localhost:11434/api/generate', {
@@ -78,7 +93,7 @@ ${sourceText.slice(0, 4500)}`;
     const parsed = JSON.parse(data.response);
     return {
       ...project,
-      category: parsed.category || project.category || 'AI & Software',
+      category: parsed.category || project.category || 'Software & AI',
       shortDesc: parsed.shortDesc || project.shortDesc,
       fullDesc: parsed.fullDesc || project.fullDesc,
       highlights:
@@ -108,32 +123,36 @@ async function main() {
   }
 
   const publicRepos = await getAllPublicRepos(USERNAME);
+  console.log(`Fetched ${publicRepos.length} public repositories from GitHub.`);
   const newlyAddedRepos = new Set();
 
   for (const repo of publicRepos) {
     const repoKey = repo.name.toLowerCase();
     if (!existingByRepo.has(repoKey)) {
+      const readableTitle = humanizeName(repo.name);
       const readme = await fetchReadme(repo.full_name, repo.default_branch);
-      if (!readme && !repo.description) continue;
 
       let newEntry = {
         id: slugify(repo.name),
         name: repo.name,
-        category: repo.language ? `${repo.language} Project` : 'AI & Software',
-        shortDesc: repo.description || `End-to-end software and data repository for ${repo.name}.`,
+        category: repo.language ? `${repo.language} Project` : 'Software & AI',
+        shortDesc:
+          repo.description ||
+          `${readableTitle} repository${repo.language ? ` built with ${repo.language}` : ''}.`,
         fullDesc:
           repo.description ||
-          `${repo.name} is an open-source repository built to solve practical problems with clean architecture and reproducible workflows.`,
+          `${readableTitle} is a GitHub repository maintained under ${USERNAME}${repo.language ? ` using ${repo.language}` : ''}.`,
         highlights: [
-          'Modular, reproducible codebase hosted on GitHub',
-          repo.language ? `Built primarily with ${repo.language}` : 'Clean project structure and documentation',
+          `Source repository hosted on GitHub (${repo.full_name})`,
+          repo.language ? `Primary language: ${repo.language}` : 'Structured project files and version control',
+          ...(repo.fork ? ['Forked and customized repository'] : []),
         ],
-        tags: [repo.language, ...(repo.topics || [])].filter(Boolean).slice(0, 6),
+        tags: [...new Set([repo.language, ...(repo.topics || [])].filter(Boolean))].slice(0, 6),
         github: repo.html_url,
         pinned: false,
       };
 
-      console.log(`New GitHub repo detected: ${repo.name}`);
+      console.log(`Adding repo: ${repo.name}`);
       newEntry = await enrichWithOllama(newEntry, readme);
       projects.push(newEntry);
       existingByRepo.set(repoKey, newEntry);
@@ -156,19 +175,18 @@ async function main() {
   }
 
   if (USE_OLLAMA) {
-    console.log('Enriching pinned & newly detected repositories with local Ollama (llama3.2:3b)...');
+    console.log('Enriching pinned & newly added repositories with Ollama (llama3.2:3b)...');
     for (let i = 0; i < projects.length; i++) {
       const repoKey = (projects[i].github || '').split('/').pop()?.toLowerCase() || projects[i].id.toLowerCase();
       if (!projects[i].pinned && !newlyAddedRepos.has(repoKey)) continue;
       const repoFullName = (projects[i].github || '').replace('https://github.com/', '');
       const readme = await fetchReadme(repoFullName);
       projects[i] = await enrichWithOllama(projects[i], readme);
-      console.log(`Enriched: ${projects[i].name}`);
     }
   }
 
   fs.writeFileSync(DATA_PATH, `export const projectsData = ${JSON.stringify(projects, null, 2)};\n`, 'utf8');
-  console.log('Updated src/data/projectsData.js');
+  console.log(`Total projects in projectsData.js: ${projects.length}`);
 }
 
 main();

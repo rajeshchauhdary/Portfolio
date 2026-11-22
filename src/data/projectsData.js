@@ -2,51 +2,52 @@ export const projectsData = [
   {
     "id": "ai-landscape-segmentation",
     "name": "AI-Landscape-Segmentation",
-    "category": "AI & ML",
+    "category": "Computer Vision",
     "shortDesc": "Segmenting 10,000 AI tools into market groups using unsupervised learning",
-    "fullDesc": "A complete, end-to-end data science project: segmenting a catalog of 10,000 AI tools into market groups using unsupervised learning, deployed as an interactive Streamlit web app.",
+    "fullDesc": "A complete, end-to-end data science project: segmenting a catalog of 10,000 AI tools into market groups using unsupervised learning, deployed as an interactive Streamlit web app (with a live, rotatable 3D segment map) that classifies new tools into their most likely segment.\n\nDiscovered segments, projected via PCA (2D and interactive 3D versions ship live in the app).\n\nWhy unsupervised learning for this dataset?\n\nA statistical noise-floor test compares the expected spread of group means under pure random chance against the actual spread of Popularity_Votes across categories. They're statistically indistinguishable — Popularity_Votes has no learnable relationship with any other column.\n\nRather than force a predictive model onto data with no real signal, this project pivots to a genuinely useful unsupervised segmentation task — grouping AI tools by their actual attributes, directly useful for catalog browsing, competitive landscape mapping, or a “which tool fits my needs” recommender.\n\n\n\n\n",
     "tags": [
-      "Unsupervised Learning",
-      "Clustering",
+      "Python",
       "Streamlit",
-      "3D Visualization",
+      "Unsupervised Learning",
       "PCA",
       "Data Preprocessing",
-      "Feature Engineering"
+      "Clustering",
+      "Data Visualization",
+      "Web App Development"
     ],
     "github": "https://github.com/rajeshchauhdary/AI-Landscape-Segmentation",
     "demo": "#",
     "highlights": [
-      "Unsupervised segmentation of 10,000 AI tools into market groups using clustering algorithms",
-      "Deployment of a live, interactive Streamlit web app with a 3D segment map",
-      "Use of PCA for 2D and 3D visualization of segment clusters",
-      "Incorporation of feature engineering and data preprocessing techniques for improved model performance",
-      "Use of ColumnTransformer for one-hot encoding and scaling of categorical and numeric features"
+      "Unsupervised segmentation of 10,000 AI tools using PCA",
+      "Interactive 3D segment map for visualizing results",
+      "Streamlit web app for classifying new tools into segments",
+      "Automated data quality checks and feature engineering",
+      "Useful for catalog browsing, competitive landscape mapping, or recommender systems"
     ],
     "pinned": true
   },
   {
     "id": "ai_salary_prediction",
     "name": "AI_Salary_Prediction",
-    "category": "AI & ML",
-    "shortDesc": "Predicting AI-era job compensation",
-    "fullDesc": "Predicting AI-era job compensation using supervised regression, deployed as an interactive Streamlit web app.\n\nThe project uses a dataset of 5,000 job postings (2010–2025) and achieves strong, learnable relationships with several columns, making it a genuine regression problem. The project includes 16 algorithms compared, hyperparameter tuning, a deep-learning benchmark, and rigorous train/test evaluation.\n\n\n",
+    "category": "Data Science",
+    "shortDesc": "Predicting AI-era job compensation from 5,000 job postings",
+    "fullDesc": "A complete, end-to-end data science project: predicting AI-era job compensation from 5,000 job postings (2010–2025) using supervised regression, deployed as an interactive Streamlit web app — complete with a live prediction form, a 19-model comparison lab, a deep-learning benchmark, time-series salary forecasting to 2028, and a rotatable **live 3D prediction surface**.\n\nAt a glance: 5,000 postings · 19 columns · 16 algorithms + tuning + deep learning · time-series forecasting to 2028 · country-level outlook to 2030 · 7-tab Streamlit app · Dockerized.\n\n<p align=\"center\"><img src=\"images/16_3d_relationship.png\" width=\"48%\" /><img src=\"images/18_model_comparison.png\" width=\"48%\" /></p>\n<p align=\"center\"><em>Left: 3D relationship between AI intensity, automation risk, and salary. Right: leaderboard across all 19 model candidates (both interactive and live in the app).</em></p>",
     "tags": [
       "Streamlit",
-      "Supervised regression",
-      "Deep learning",
-      "AI-era job compensation",
-      "Data science"
+      "Supervised Regression",
+      "Deep Learning",
+      "Time-Series Forecasting",
+      "Country-Level Outlook"
     ],
     "github": "https://github.com/rajeshchauhdary/AI_Salary_Prediction",
     "demo": "#",
     "highlights": [
-      "Supervised regression using 16 algorithms",
-      "Hyperparameter tuning",
+      "Supervised regression using 19 columns",
       "Deep-learning benchmark",
-      "Rigorous train/test evaluation",
-      "Interactive Streamlit web app",
-      "Live 3D prediction surface"
+      "Time-series salary forecasting to 2028",
+      "Country-level outlook to 2030",
+      "Rotatable live 3D prediction surface",
+      "7-tab Streamlit app"
     ],
     "pinned": true
   },
@@ -55,62 +56,65 @@ export const projectsData = [
     "name": "EDA-Studio",
     "category": "Data Science",
     "shortDesc": "Interactive EDA and automated reporting studio",
-    "fullDesc": "A production-grade, single-page Streamlit application that ingests CSV files and produces a comprehensive, interactive Exploratory Data Analysis (EDA) report — complete with automated insights, dataset comparison (drift detection), memory-aware profiling, and one-click HTML/CSV export.\n\nThis tool is built for analysts and ML engineers who need to go from **raw CSV → decision-ready report** in seconds, without spinning up a notebook. It differentiates itself from typical EDA scripts through operational maturity:\n\nHandles messy encodings, oversized files, and malformed dates gracefully\nActively recommends (and can apply) data-cleaning transformations\nDetects data drift between two dataset versions (Production vs. Test, Month 1 vs. Month 2)\nSurfaces memory footprint before it becomes a browser-crashing problem\nExports a fully self-contained, offline-readable HTML report",
+    "fullDesc": "A production-grade, single-page Streamlit application that ingests CSV files and produces a comprehensive, interactive Exploratory Data Analysis (EDA) report — complete with automated insights, dataset comparison (drift detection), memory-aware profiling, and one-click HTML/CSV export.\n\nThis tool is built for analysts and ML engineers who need to go from **raw CSV → decision-ready report** in seconds, without spinning up a notebook. It differentiates itself from typical EDA scripts through operational maturity:\n\n* Handles messy encodings, oversized files, and malformed dates gracefully\n* Actively recommends (and can apply) data-cleaning transformations\n* Detects data drift between two dataset versions (Production vs. Test, Month 1 vs. Month 2)\n* Surfaces memory footprint before it becomes a browser-crashing problem\n* Exports a fully self-contained, offline-readable HTML report",
     "tags": [
       "Streamlit",
       "EDA",
-      "Automated Reporting",
-      "Data Science",
+      "Automated reporting",
+      "Data science",
+      "Data analysis",
+      "Machine learning",
       "Python"
     ],
     "github": "https://github.com/rajeshchauhdary/EDA-Studio",
     "demo": "#",
     "highlights": [
-      "Handles messy encodings, oversized files, and malformed dates gracefully",
-      "Actively recommends (and can apply) data-cleaning transformations",
-      "Detects data drift between two dataset versions (Production vs. Test, Month 1 vs. Month 2)",
-      "Surfaces memory footprint before it becomes a browser-crashing problem",
-      "Exports a fully self-contained, offline-readable HTML report"
+      "Interactive EDA report",
+      "Automated insights",
+      "Drift detection",
+      "Memory-aware profiling",
+      "One-click HTML/CSV export"
     ],
     "pinned": true
   },
   {
     "id": "edusity",
     "name": "Edusity",
-    "category": "AI & ML",
+    "category": "Language Learning",
     "shortDesc": "Platform for language learning",
-    "fullDesc": "Edusity is a platform that utilizes machine learning and natural language processing to facilitate language learning.\n\nThe platform's technical pipeline consists of natural language processing, machine learning, and text analysis. The outcome is a personalized learning experience for language learners.",
+    "fullDesc": "Edusity is a platform for language learning. Edusity uses a technical pipeline that utilizes a machine learning based algorithm to learn the language through AI and ML. Edusity provides a practical outcome of being able to learn a language in a short span of time, making it a very effective tool for language learning. \n\n The technical pipeline of Edusity consists of natural language processing, computer vision, and machine learning. The platform uses a computer vision system to analyze the user\\'s speech and text input, and then uses machine learning algorithms to learn the language. The platform also uses natural language processing to analyze the user\\'s input and provide feedback.",
     "tags": [
+      "Language Learning",
       "Machine Learning",
       "Natural Language Processing",
-      "Python",
-      "NLTK",
-      "spaCy"
+      "Computer Vision",
+      "AI",
+      "Language Analysis"
     ],
     "github": "https://github.com/rajeshchauhdary/Edusity",
     "demo": "#",
     "highlights": [
-      "Machine learning-based language analysis",
-      "Natural language processing for sentiment analysis",
-      "Text analysis for content understanding",
-      "Personalized learning experience"
+      "Machine learning based algorithm",
+      "Natural Language Processing",
+      "Computer Vision",
+      "AI and ML",
+      "Language Learning",
+      "Speech Analysis"
     ],
     "pinned": true
   },
   {
     "id": "feature_engineering",
     "name": "Feature_Engineering",
-    "category": "AI & ML",
+    "category": "Feature Engineering",
     "shortDesc": "Automated Feature Engineering & Validation Engine",
-    "fullDesc": "A Streamlit app that ingests a raw tabular dataset and a target column, automatically generates hundreds of candidate features, validates each one through 5-fold cross-validation, evolves the best feature combinations with a genetic algorithm, prunes redundant/collinear features, and explains why the winning features work.\n\n\n",
+    "fullDesc": "A Streamlit app that ingests a raw tabular dataset and a target column, automatically generates hundreds of candidate features, validates each one through 5-fold cross-validation, evolves the best feature combinations with a genetic algorithm, prunes redundant/collinear features, and explains why the winning features work.",
     "tags": [
+      "Streamlit",
       "Feature Engineering",
       "Machine Learning",
-      "Streamlit",
       "Genetic Algorithm",
-      "Collinearity Removal",
-      "SHAP",
-      "Permutation Importance"
+      "SHAP"
     ],
     "github": "https://github.com/rajeshchauhdary/Feature_Engineering",
     "demo": "#",
@@ -118,8 +122,7 @@ export const projectsData = [
       "Automated feature generation",
       "5-fold cross-validation",
       "Genetic algorithm for feature evolution",
-      "Collinearity removal",
-      "SHAP and permutation importance for feature explanations"
+      "Feature explanation using SHAP or permutation importance"
     ],
     "pinned": true
   },

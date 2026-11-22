@@ -4,7 +4,7 @@ import { projectsData } from '../data/projectsData';
 import { ArrowUpRight, Pin, Search, X } from 'lucide-react';
 
 function formatTitle(name = '') {
-  return name.replace(/[-_]+/g, ' ').trim();
+  return name.replace(/[-_]+/g, ' ').replace(/\s+/g, ' ').trim();
 }
 
 export default function Projects() {
@@ -19,7 +19,7 @@ export default function Projects() {
     }
     return [...counts.entries()]
       .sort((a, b) => b[1] - a[1])
-      .slice(0, 5)
+      .slice(0, 4)
       .map(([cat]) => cat);
   }, []);
 
@@ -51,19 +51,25 @@ export default function Projects() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-8 pb-16 space-y-8">
-      <div className="space-y-3 border-b border-white/10 pb-7">
-        <span className="inline-block text-xs font-mono text-[#FACC15] uppercase tracking-[0.22em]">
-          PROJECTS
-        </span>
-        <h1 className="text-3xl sm:text-5xl font-serif tracking-tight text-[#F8F7F2]">
-          Selected work &amp; systems.
-        </h1>
-        <p className="text-neutral-400 text-base sm:text-lg max-w-2xl leading-relaxed">
-          Machine learning pipelines, RAG systems, and practical apps synced from GitHub.
-        </p>
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-7">
+        <div className="space-y-3">
+          <span className="inline-block text-xs font-mono text-[#FACC15] uppercase tracking-[0.22em]">
+            PROJECTS
+          </span>
+          <h1 className="text-3xl sm:text-5xl font-serif tracking-tight text-[#F8F7F2]">
+            Selected work &amp; systems.
+          </h1>
+          <p className="text-neutral-400 text-base sm:text-lg max-w-2xl leading-relaxed">
+            Machine learning pipelines, RAG systems, and practical apps synced from GitHub.
+          </p>
+        </div>
+
+        <div className="rounded-xl border border-white/10 bg-[#0C0C0A] px-4 py-2.5 text-xs font-mono text-neutral-300 shrink-0 self-start sm:self-auto">
+          <span className="text-[#FACC15] font-semibold">{projectsData.length}</span> synced repositories
+        </div>
       </div>
 
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
         <div className="flex flex-wrap items-center gap-2">
           {filters.map((filter) => {
             const active = selectedFilter === filter;
@@ -85,13 +91,13 @@ export default function Projects() {
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="relative flex-1 md:w-64">
-            <Search className="w-4 h-4 text-neutral-500 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+          <div className="relative flex-1 sm:w-72">
+            <Search className="w-4 h-4 text-neutral-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
             <input
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search stack or project..."
+              placeholder="Search project or stack..."
               className="w-full rounded-xl border border-white/10 bg-[#0C0C0A] pl-9 pr-8 py-2 text-xs font-mono text-[#F8F7F2] placeholder:text-neutral-500 focus:outline-none focus:border-[#FACC15]/60"
             />
             {query && (
@@ -107,7 +113,7 @@ export default function Projects() {
           </div>
 
           <span className="text-xs font-mono text-neutral-400 shrink-0">
-            {filteredProjects.length} {filteredProjects.length === 1 ? 'project' : 'projects'}
+            Showing {filteredProjects.length}
           </span>
         </div>
       </div>
@@ -167,16 +173,18 @@ export default function Projects() {
                   </p>
                 </div>
 
-                <div className="flex flex-wrap gap-2">
-                  {tags.map((tag, tIdx) => (
-                    <span
-                      key={tIdx}
-                      className="rounded-lg border border-white/10 bg-[#080807] px-2.5 py-1 text-xs font-mono text-neutral-300"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                {tags.length > 0 && (
+                  <div className="flex flex-wrap gap-2">
+                    {tags.map((tag, tIdx) => (
+                      <span
+                        key={tIdx}
+                        className="rounded-lg border border-white/10 bg-[#080807] px-2.5 py-1 text-xs font-mono text-neutral-300"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
 
                 <div className="pt-4 border-t border-white/10 flex items-center justify-between gap-4 text-xs sm:text-sm font-mono">
                   <Link
