@@ -1,36 +1,77 @@
-﻿import React from 'react';
-import { Cpu, Terminal, Layers, Cloud } from 'lucide-react';
+﻿import React, { useState } from 'react';
+import {
+  Cpu,
+  Terminal,
+  Layers,
+  Cloud,
+  Sparkles,
+  ScanEye,
+  ShieldCheck,
+  Database,
+  Workflow,
+} from 'lucide-react';
 
-const skillCategories = [
+const skillGroups = [
   {
     number: '01',
-    title: 'Languages & Core',
-    subtitle: 'Foundational languages for data pipelines, APIs, and systems.',
+    filter: 'Core & Web',
+    title: 'Core Languages',
+    subtitle: 'Primary languages for data analysis, backend services, and cross-platform apps.',
     icon: Terminal,
     skills: ['Python', 'SQL', 'TypeScript', 'JavaScript', 'C', 'Go', 'Dart'],
   },
   {
     number: '02',
-    title: 'AI, ML & Data Science',
-    subtitle: 'Modeling, computer vision, retrieval pipelines, and local LLM workflows.',
+    filter: 'AI & Data',
+    title: 'Data Science & Machine Learning',
+    subtitle: 'Exploratory analysis, feature pipelines, classical ML, and deep learning models.',
     icon: Cpu,
     skills: [
-      'Scikit-Learn',
       'Pandas',
       'NumPy',
+      'Scikit-Learn',
       'PyTorch',
-      'OpenCV',
-      'MediaPipe',
-      'LLMs & RAG',
-      'Agentic AI',
-      'Ollama',
       'Feature Engineering',
+      'EDA & Statistics',
+      'Plotly',
+      'Seaborn',
     ],
   },
   {
     number: '03',
-    title: 'Web, App & Databases',
-    subtitle: 'Full-stack interfaces, REST backends, and structured storage.',
+    filter: 'AI & Data',
+    title: 'LLMs, RAG & Agentic AI',
+    subtitle: 'Retrieval-augmented generation, hybrid search, local models, and evaluation loops.',
+    icon: Sparkles,
+    skills: [
+      'RAG Pipelines',
+      'Hybrid Search',
+      'Agentic Workflows',
+      'Ollama (Local LLMs)',
+      'Embeddings & Reranking',
+      'Prompt Engineering',
+      'LLM Evaluation',
+    ],
+  },
+  {
+    number: '04',
+    filter: 'AI & Data',
+    title: 'Computer Vision & 3D Imaging',
+    subtitle: 'Real-time vision tracking, medical imaging segmentation, and surface reconstruction.',
+    icon: ScanEye,
+    skills: [
+      'OpenCV',
+      'MediaPipe',
+      'Image Segmentation',
+      '3D Reconstruction',
+      'Spatial Geometry',
+    ],
+  },
+  {
+    number: '05',
+    filter: 'Core & Web',
+    title: 'Web, Mobile & Databases',
+    subtitle: 'Responsive interfaces, high-speed APIs, caching layers, and relational/NoSQL stores.',
     icon: Layers,
     skills: [
       'React',
@@ -45,66 +86,122 @@ const skillCategories = [
     ],
   },
   {
-    number: '04',
+    number: '06',
+    filter: 'Cloud & Security',
     title: 'Cloud, Security & DevOps',
-    subtitle: 'Containerization, automated testing, and reliable deployment workflows.',
+    subtitle: 'Containerized deployments, CI automation, security checks, and automated test suites.',
     icon: Cloud,
     skills: [
       'AWS Cloud',
       'Docker',
       'Git & GitHub Actions',
       'Pytest',
+      'Input Validation & Security',
+      'AI-Assisted Vibe Coding',
       'Linux / WSL',
-      'VS Code',
-      'PowerShell',
     ],
   },
 ];
 
+const pillars = [
+  {
+    label: '01 · DATA & AI',
+    title: 'From Raw Data to Evaluated Models',
+    description:
+      'Clean datasets, engineer meaningful features, and validate models with clear metrics before wrapping them into usable tools.',
+    icon: Database,
+  },
+  {
+    label: '02 · SPEED + STRUCTURE',
+    title: 'Fast Vibe Coding, Clean Architecture',
+    description:
+      'Use modern AI coding workflows to prototype quickly while keeping modular code, clear APIs, and readable interfaces.',
+    icon: Workflow,
+  },
+  {
+    label: '03 · RELIABILITY',
+    title: 'Security & Testing Built In',
+    description:
+      'Protect endpoints with strict schema validation, safe environment handling, and automated Pytest & CI checks.',
+    icon: ShieldCheck,
+  },
+];
+
+const filters = ['All', 'AI & Data', 'Core & Web', 'Cloud & Security'];
+
 export default function Skills() {
+  const [activeFilter, setActiveFilter] = useState('All');
+
+  const visibleGroups =
+    activeFilter === 'All'
+      ? skillGroups
+      : skillGroups.filter((group) => group.filter === activeFilter);
+
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-8 pb-16 space-y-10">
-      <div className="space-y-3 border-b border-white/10 pb-8">
-        <span className="inline-block text-xs font-mono text-[#FACC15] uppercase tracking-[0.22em]">
-          SKILLS &amp; STACK
-        </span>
-        <h1 className="text-3xl sm:text-5xl font-serif tracking-tight text-[#F8F7F2]">
-          Tools, languages &amp; frameworks.
-        </h1>
-        <p className="text-neutral-400 text-base sm:text-lg max-w-2xl leading-relaxed">
-          The technologies I rely on to explore data, train models, and ship tested applications.
-        </p>
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-8 pb-16 space-y-12">
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-white/10 pb-8">
+        <div className="space-y-3">
+          <span className="inline-block text-xs font-mono text-[#FACC15] uppercase tracking-[0.22em]">
+            SKILLS &amp; STACK
+          </span>
+          <h1 className="text-3xl sm:text-5xl font-serif tracking-tight text-[#F8F7F2]">
+            Tools, languages &amp; frameworks.
+          </h1>
+          <p className="text-neutral-400 text-base sm:text-lg max-w-2xl leading-relaxed">
+            Everything I use across data science, AI pipelines, full-stack apps, and secure deployments.
+          </p>
+        </div>
+
+        <div className="flex flex-wrap gap-2">
+          {filters.map((filter) => {
+            const active = activeFilter === filter;
+            return (
+              <button
+                key={filter}
+                type="button"
+                onClick={() => setActiveFilter(filter)}
+                className={`rounded-xl px-3.5 py-2 text-xs font-mono transition-colors ${
+                  active
+                    ? 'bg-[#FACC15] text-[#080807] font-semibold'
+                    : 'border border-white/10 bg-[#0C0C0A] text-neutral-300 hover:border-[#FACC15]/50 hover:text-[#F8F7F2]'
+                }`}
+              >
+                {filter}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {skillCategories.map((cat) => {
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-start">
+        {visibleGroups.map((cat) => {
           const Icon = cat.icon;
           return (
             <div
               key={cat.number}
-              className="rounded-2xl border border-white/10 bg-[#0C0C0A] p-6 sm:p-8 flex flex-col justify-between space-y-6 hover:border-[#FACC15]/40 transition-colors"
+              className="rounded-2xl border border-white/10 bg-[#0C0C0A] p-6 space-y-4 hover:border-[#FACC15]/40 transition-colors"
             >
-              <div className="space-y-3">
-                <div className="flex items-center justify-between text-xs font-mono text-[#FACC15]">
-                  <span>{cat.number}</span>
-                  <div className="rounded-xl border border-white/10 bg-[#080807] p-2 text-[#FACC15]">
-                    <Icon className="w-4 h-4" />
-                  </div>
+              <div className="flex items-center justify-between text-xs font-mono text-[#FACC15]">
+                <span>{cat.number}</span>
+                <div className="rounded-xl border border-white/10 bg-[#080807] p-2 text-[#FACC15]">
+                  <Icon className="w-4 h-4" />
                 </div>
+              </div>
 
-                <h2 className="text-xl sm:text-2xl font-serif text-[#F8F7F2]">
+              <div className="space-y-1.5">
+                <h2 className="text-lg sm:text-xl font-serif text-[#F8F7F2]">
                   {cat.title}
                 </h2>
-                <p className="text-sm text-neutral-400 leading-relaxed">
+                <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
                   {cat.subtitle}
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-white/10 flex flex-wrap gap-2">
+              <div className="pt-3 border-t border-white/10 flex flex-wrap gap-2">
                 {cat.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="rounded-lg border border-white/10 bg-[#080807] px-3 py-1.5 text-xs font-mono text-neutral-300 hover:border-[#FACC15]/40 hover:text-[#F8F7F2] transition-colors"
+                    className="rounded-lg border border-white/10 bg-[#080807] px-2.5 py-1 text-xs font-mono text-neutral-300 hover:border-[#FACC15]/40 hover:text-[#F8F7F2] transition-colors"
                   >
                     {skill}
                   </span>
@@ -114,6 +211,34 @@ export default function Skills() {
           );
         })}
       </div>
+
+      <section className="space-y-4 pt-2">
+        <span className="block text-xs font-mono text-[#FACC15] uppercase tracking-[0.22em]">
+          ENGINEERING WORKFLOW
+        </span>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {pillars.map((pillar) => {
+            const Icon = pillar.icon;
+            return (
+              <div
+                key={pillar.label}
+                className="rounded-2xl border border-white/10 bg-[#0C0C0A] p-6 space-y-3"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-mono text-[#FACC15] uppercase tracking-[0.18em]">
+                    {pillar.label}
+                  </span>
+                  <Icon className="w-4 h-4 text-[#FACC15]" />
+                </div>
+                <h3 className="text-lg font-serif text-[#F8F7F2]">{pillar.title}</h3>
+                <p className="text-sm text-neutral-400 leading-relaxed">
+                  {pillar.description}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </section>
     </div>
   );
 }
