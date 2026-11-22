@@ -55,15 +55,6 @@ export default function ProjectDetail() {
             <span className="text-xs font-mono text-[#FACC15] uppercase tracking-[0.2em]">
               {cleanText(project.category)}
             </span>
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-mono text-neutral-300 hover:text-[#FACC15] transition-colors"
-            >
-              <span>{project.github.replace('https://', '')}</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </a>
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-serif tracking-tight text-[#F8F7F2]">
