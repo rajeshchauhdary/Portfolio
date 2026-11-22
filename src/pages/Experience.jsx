@@ -57,7 +57,7 @@ const journeyItems = [
   },
 ];
 
-export default function Experience() {
+export function Experience() {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-8 pb-16 space-y-10">
       <div className="space-y-3 border-b border-white/10 pb-8">
@@ -142,3 +142,5 @@ export default function Experience() {
     </div>
   );
 }
+
+export default Experience;
